@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:57:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 14:59:57 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*gnl_read(char *save, int fd);
 static char	*get_line(char *save);
 static char	*get_save(char *save);
-static void	safer_free(void *p);
+static void	ft_free(void *p);
 
 char	*get_next_line(int fd)
 {
@@ -32,8 +32,6 @@ char	*get_next_line(int fd)
 		save[0] = '\0';
 	}
 	save = gnl_read(save, fd);
-	if (save == NULL)
-		return (NULL);
 	res = get_line(save);
 	save = get_save(save);
 	return (res);
@@ -46,21 +44,21 @@ static char	*gnl_read(char *save, int fd)
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
-		return (NULL);
+		ft_error("malloc failed");
 	rc = 1;
 	while (ft_strchr(save, '\n') == NULL && rc != 0)
 	{
 		rc = read(fd, buf, BUFFER_SIZE);
 		if (rc == -1)
 		{
-			safer_free(buf);
-			safer_free(save);
-			return (NULL);
+			ft_free(buf);
+			ft_free(save);
+			ft_error("read failed");
 		}
 		buf[rc] = '\0';
 		save = ft_strjoin(save, buf);
 	}
-	safer_free(buf);
+	ft_free(buf);
 	return (save);
 }
 
@@ -76,13 +74,13 @@ static char	*get_line(char *save)
 	{
 		line = malloc(sizeof(char) * (ft_strlen(save) + 1));
 		if (line == NULL)
-			return (NULL);
+			ft_error("malloc failed");
 		ft_strlcpy(line, save, ft_strlen(save) + 1);
 		return (line);
 	}
 	line = malloc(sizeof(char) * (find - save + 2));
 	if (line == NULL)
-		return (NULL);
+		ft_error("malloc failed");
 	ft_strlcpy(line, save, find - save + 2);
 	return (line);
 }
@@ -97,24 +95,15 @@ static char	*get_save(char *save)
 	find = ft_strchr(save, '\n');
 	if (find == NULL)
 	{
-		safer_free(save);
+		ft_free(save);
 		return (NULL);
 	}
 	str = find + 1;
 	len = ft_strlen(str);
 	res = malloc(sizeof(char) * (len + 1));
 	if (res == NULL)
-		return (NULL);
+		ft_error("malloc failed");
 	ft_strlcpy(res, str, len + 1);
-	safer_free(save);
+	ft_free(save);
 	return (res);
-}
-
-static void	safer_free(void *p)
-{
-	if (p != NULL)
-	{
-		free(p);
-		p = NULL;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 10:57:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 10:41:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/25 23:33:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	check_sign(const char *str, size_t *i);
 
 int	ft_atoi(const char *str)
 {
-	size_t		i;
-	long long	nbr;
-	int			sign;
+	size_t	i;
+	int		nbr;
+	int		sign;
 
 	i = 0;
 	while (('\t' <= str[i] && str[i] <= '\r') || str[i] == ' ')
