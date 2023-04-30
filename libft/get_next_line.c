@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/02/22 00:09:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 14:57:21 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 	{
 		save = malloc(sizeof(char) * 1);
 		if (save == NULL)
-			return (NULL);
+			ft_error("malloc failed");
 		save[0] = '\0';
 	}
 	save = gnl_read(save, fd);

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:17:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/02/22 00:27:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 14:56:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len2 = ft_strlen(s2);
 	str = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (str == NULL)
-		return (NULL);
+		ft_error("malloc failed");
 	ft_strlcpy(str, s1, len1 + 1);
 	ft_strlcpy(str + len1, s2, len2 + 1);
 	safer_free(s1);
