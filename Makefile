@@ -2,33 +2,33 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
-CFLAGS += -lmlx -framework OpenGL -framework AppKit
+# CFLAGS += -lmlx -framework OpenGL -framework AppKit
 
-INCDIR = ./include
+INCDIR = ./includes
 INC = $(shell find $(INCDIR) -name "*.h" -type f | xargs)
 
 SRCDIR = ./srcs
 SRCS = $(shell find $(SRCDIR) -name "*.c" -type f | xargs)
 OBJS = $(SRCS:%.c=%.o)
 
-UTILDIR = ./utils
-UTILS = $(shell find $(UTILDIR) -name "*.c" -type f | xargs)
-UTILS_OBJ = $(UTILS:%.c=%.o)
+# UTILDIR = ./utils
+# UTILS = $(shell find $(UTILDIR) -name "*.c" -type f | xargs)
+# UTILS_OBJ = $(UTILS:%.c=%.o)
 
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
-$(NAME): $(OBJS) $(UTILS_OBJ) $(LIBFT)
-		$(CC) $(CFLAGS) $(SRCS) $(UTILS) $(LIB) -o $(NAME)
-
-$(LIBFT):
-		$(MAKE) -C ./libft
-
 all: $(NAME)
 
+$(NAME): $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+		$(MAKE) -C $(LIBDIR)
+
 clean:
-		$(MAKE) fclean -C ./libft
-		$(RM) $(OBJS) $(B_OBJS) $(UTILS_OBJ)
+		$(MAKE) fclean -C $(LIBDIR)
+		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
 		$(RM) $(NAME) $(LIBFT)

@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 20:57:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:55:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:35:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 static int	check_digit(int n, size_t digit);
 

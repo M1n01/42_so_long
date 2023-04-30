@@ -8,3 +8,4 @@ a.out*
 *.o
 so_long_tester
 mini*
+*.bar

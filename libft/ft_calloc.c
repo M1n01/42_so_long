@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:37:15 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:54:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:34:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

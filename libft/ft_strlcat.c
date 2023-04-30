@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:53:52 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 11:16:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:36:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 {

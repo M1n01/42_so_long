@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:16:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 11:21:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:37:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 int	ft_toupper(int c)
 {

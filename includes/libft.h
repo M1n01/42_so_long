@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:14:49 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 11:20:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:01:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <fcntl.h>
 # include "../libft/ft_printf/ft_printf.h"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

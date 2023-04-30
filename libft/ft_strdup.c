@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:19:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:56:45 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:36:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strdup(const char *s1)
 {

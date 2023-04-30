@@ -6,16 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:59:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:37:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 static char	*gnl_read(char *save, int fd);
 static char	*get_line(char *save);
 static char	*get_save(char *save);
-static void	ft_free(void *p);
 
 char	*get_next_line(int fd)
 {

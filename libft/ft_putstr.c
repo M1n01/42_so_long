@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 15:31:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 10:54:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:36:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 ssize_t	ft_putstr(char *s)
 {

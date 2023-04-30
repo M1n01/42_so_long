@@ -1,19 +1,19 @@
 NAME = libft.a
 
 CC = cc
-INCDIR = -I./ft_printf  -I./
-CFLAGS = -Wall -Wextra -Werror $(INCDIR)
+INCDIR = ../includes ./ft_printf
+CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
 
-SRCDIR = ./ft_printf ./
+LIBDIR	=	. ./ft_printf
 
-SRCS = $(shell find $(SRCDIR) -name "*.c" -type f | xargs)
+SRCS = $(shell find $(LIBDIR) -name "*.c" -type f | xargs)
 
 OBJS = $(SRCS:%.c=%.o)
 
+all: $(NAME)
+
 $(NAME): $(OBJS)
 		ar -rcs $(NAME) $(OBJS)
-
-all: $(NAME)
 
 clean:
 		$(RM) $(OBJS) $(B_OBJS)

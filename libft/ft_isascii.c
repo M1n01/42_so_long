@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:50:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 11:07:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:35:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 bool	ft_isascii(int c)
 {

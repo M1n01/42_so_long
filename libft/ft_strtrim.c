@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 14:34:15 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 14:57:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/30 17:37:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../includes/libft.h"
 
 static size_t	get_start(char const *s1, char const *set);
 static size_t	get_end(char const *s1, char const *set);
