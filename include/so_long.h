@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/03/03 18:01:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:25:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
-typedef struct	s_program
+typedef struct s_map
 {
-	void	*mlx_pointer;
-	void	*window;
-	// … etc
-}				t_program;
+	int		width;
+	int		height;
+	char	**map;
+}	t_map;
 
 void	mlx();
 

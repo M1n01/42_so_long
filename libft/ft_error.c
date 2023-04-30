@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:35:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/25 10:54:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/04/28 18:32:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_error(char *str)
 {
-	ft_putstr(str);
-	ft_putchar('\n');
+	ft_putendl(str);
 	exit(1);
 	return ;
 }
