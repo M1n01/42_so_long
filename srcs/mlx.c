@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/02 12:53:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/02 13:43:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	draw_map(char *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
-	int	width = 100;
-	int	height = 100;
+	int	width = 1000;
+	int	height = 1000;
 
 	i = 0;
-	while (i < map.width)
+	while (i < width)
 	{
 		j = 0;
-		while (j < map.height)
+		while (j < height)
 		{
-			mlx_pixel_put(mlx, mlx_win, i, j, 127);
+			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 127);
 			j++;
 		}
 		i++;
@@ -36,10 +36,10 @@ void	mlx(char *map)
 {
 	t_mlx	*mlx;
 
-	mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, mlx->width, mlx->height, "test");
+	mlx->mlx_ptr = mlx_init();
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	draw_map(map, mlx);
-	mlx_loop(mlx->mlx);
+	mlx_loop(mlx->mlx_ptr);
 	// 最初のうちはCtrl+Cで終了
 	// のちに終了するプログラムを書く
 	return (0);
