@@ -6,11 +6,17 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/02 13:43:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/02 14:05:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
+
+int	deal_key(int key, void *param)
+{
+	ft_putchar('X');
+	return (0);
+}
 
 void	draw_map(char *map, t_mlx *mlx)
 {
@@ -26,6 +32,7 @@ void	draw_map(char *map, t_mlx *mlx)
 		while (j < height)
 		{
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 127);
+			mlx_key_hook(mlx->win_ptr, deal_key, NULL);
 			j++;
 		}
 		i++;
