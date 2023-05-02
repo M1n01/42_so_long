@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:04:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/01 23:20:21 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft.h"
 // # include "../minilibx-linux/mlx.h"
 // # include "../minilibx-linux/mlx_int.h"
+#include "debug.h"
 
 typedef struct s_map
 {
@@ -29,5 +30,6 @@ typedef struct s_map
 
 void	mlx();
 bool	check_map(char *map);
+size_t	count_map_width(char *map);
 
 #endif
