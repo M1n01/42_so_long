@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/02 11:57:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/02 12:41:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-size_t	count_map_width(char *map)
+static size_t	count_map_width(char *map)
 {
 	size_t	i;
 	size_t	j;
@@ -37,7 +37,7 @@ size_t	count_map_width(char *map)
 	return (width);
 }
 
-size_t	count_map_height(char *map)
+static size_t	count_map_height(char *map)
 {
 	size_t	i;
 	size_t	height;
@@ -47,7 +47,14 @@ size_t	count_map_height(char *map)
 	while (map[i] != '\0')
 	{
 		if (map[i] == '\n')
+		{
+			if (map[i + 1] == '\0')
+			{
+				ft_free(map);
+				ft_error("Invalid map");
+			}
 			height++;
+		}
 		i++;
 	}
 	return (height);
@@ -85,7 +92,38 @@ bool	check_map(char *map)
 {
 	if (count_map_width(map) == count_map_height(map))
 		return (false);
-	if (check_obj(map) == false)
-		return (false);
-	return (true);
+	return (check_obj(map));
+}
+
+char	*get_map(char *file)
+{
+	int		fd;
+	char	*map;
+	char	*new;
+	char	*buf;
+	ssize_t	read_size;
+
+	puts("get map");
+	map = ft_strdup("");
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		ft_error("Failed to open file");
+	read_size = 1;
+	while (read_size > 0)
+	{
+		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (buf == NULL)
+			ft_error("malloc failed");
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size < 0)
+			ft_error("Failed to read file");
+		buf[read_size] = '\0';
+		// malloc error起きてる？？
+		new = ft_strjoin(map, buf);
+		free(buf);
+		free(map);
+		map = new;
+	}
+	close(fd);
+	return (map);
 }
