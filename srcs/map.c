@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 00:52:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 01:22:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,11 @@ char	*get_map(char *file)
 		buf[read_size] = '\0';
 		new = ft_strjoin(map, buf); // malloc
 		ft_free(buf); // free
-		if (map)
-			ft_free(map); // free
+		ft_free(map); // free
 		map = new;
 	}
+	if (map)
+		ft_free(map);
 	close(fd);
 	return (map);
 }
