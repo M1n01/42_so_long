@@ -19,7 +19,7 @@ LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
 MLXDIR = ./minilibx-linux
-MLX = $(MLXDIR)/libmlx.a $(MLXDIR)/libmlx_Darwin.a
+MLX = $(MLXDIR)/libmlx_Darwin.a
 
 all: $(NAME)
 

@@ -6,12 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/03 12:31:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:33:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
-# include "../minilibx-linux/mlx_int.h"
 
 int	deal_key(int key, void *param)
 {
