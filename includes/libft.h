@@ -6,17 +6,18 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:14:49 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/01 16:53:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/03 12:25:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
-# include <limits.h>
 # include <stdarg.h>
-# include <unistd.h>
 # include <stdbool.h>
+# include <stdint.h>
+# include <unistd.h>
+# include <limits.h>
 # include <fcntl.h>
 # include "../libft/ft_printf/ft_printf.h"
 # ifndef BUFFER_SIZE
