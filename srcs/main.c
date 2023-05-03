@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/03 19:33:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/03 19:35:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	deal_key(int key, void *param)
 {
 	ft_putchar('X');
 	(void)key;
+	(void)param;
 	return (0);
 }
 
