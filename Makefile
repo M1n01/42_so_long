@@ -24,7 +24,7 @@ MLX = $(MLXDIR)/libmlx.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lmlx -lmlx -lXext -lX11 -lm
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
