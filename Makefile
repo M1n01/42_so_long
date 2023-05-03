@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
-# CFLAGS += -lmlx -framework OpenGL -framework AppKit
+CFLAGS += -lmlx -framework OpenGL -framework AppKit
 
 INCDIR = ./includes
 INC = $(shell find $(INCDIR) -name "*.h" -type f | xargs)
