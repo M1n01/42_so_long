@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/02 17:13:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:46:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ char	*get_map(char *file)
 		// malloc error起きてる？？
 		new = ft_strjoin(map, buf);
 		free(buf);
-		free(map);
+		// free(map);
 		map = new;
 	}
 	close(fd);
