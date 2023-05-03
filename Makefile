@@ -24,7 +24,7 @@ MLX = $(MLXDIR)/libmlx_Darwin.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME)
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
