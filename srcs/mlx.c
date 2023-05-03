@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/02 17:09:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/02 17:15:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ void	draw_map(char *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
-	int	width = 1000;
-	int	height = 1000;
 
 	(void)map;
 	i = 0;
-	while (i < width)
+	while (i < mlx->width)
 	{
 		j = 0;
-		while (j < height)
+		while (j < mlx->height)
 		{
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 127);
 			mlx_key_hook(mlx->win_ptr, deal_key, NULL);
@@ -46,6 +44,11 @@ void	mlx(char *map)
 {
 	t_mlx	*mlx;
 
+	mlx = malloc(sizeof(t_mlx));
+	if (mlx == NULL)
+		ft_error("Malloc failed");
+	mlx->height = 1000;
+	mlx->width = 1000;
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	draw_map(map, mlx);

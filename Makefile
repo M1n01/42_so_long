@@ -18,16 +18,23 @@ OBJS = $(SRCS:%.c=%.o)
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
+MLXDIR = ./minilibx-linux
+MLX = $(MLXDIR)/libmlx.a $(MLXDIR)/libmlx_Darwin.a
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
 
+$(MLX):
+		$(MAKE) -C $(MLXDIR)
+
 clean:
 		$(MAKE) fclean -C $(LIBDIR)
+		$(MAKE) clean -C $(MLXDIR)
 		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
