@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 16:41:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:43:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ char	*get_map(char *file)
 	if (fd < 0)
 		ft_error("Failed to open file");
 	read_size = 1;
+	puts("read_size");
 	while (read_size > 0)
 	{
 		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
