@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 01:22:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 12:46:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+#include <stdio.h>
 
 static size_t	count_map_width(char *map)
 {
@@ -23,14 +25,14 @@ static size_t	count_map_width(char *map)
 	while (map[i] != '\0')
 	{
 		j = 0;
-		while (map[i+j] != '\n')
+		while (map[i+j] != '\n' && map[i+j] != '\0')
 			j++;
 		if (width == 0)
 			width = j;
 		else if (width != j)
 		{
 			free(map);
-			ft_error("Invalid map");
+			ft_error("Invalid width map");
 		}
 		i += j + 1;
 	}
@@ -51,7 +53,7 @@ static size_t	count_map_height(char *map)
 			if (map[i + 1] == '\0')
 			{
 				ft_free(map);
-				ft_error("Invalid map");
+				ft_error("Invalid height map");
 			}
 			height++;
 		}
@@ -98,18 +100,20 @@ bool	check_map(char *map)
 char	*get_map(char *file)
 {
 	int		fd;
-	char	*map;
+	static char	*map;
 	char	*buf;
 	char	*new;
 	ssize_t	read_size;
 
-	map = ft_strdup(""); // malloc
+	map = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error("Failed to open file");
 	read_size = 1;
+	int	count = 0;
 	while (read_size > 0)
 	{
+		ft_printf("loop count: %d\n", count++);
 		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
 		if (buf == NULL)
 			ft_error("malloc failed");
@@ -117,13 +121,16 @@ char	*get_map(char *file)
 		if (read_size < 0)
 			ft_error("Failed to read file");
 		buf[read_size] = '\0';
-		new = ft_strjoin(map, buf); // malloc
+		if (map == NULL)
+			new = ft_strdup(buf); // malloc
+		else
+			new = ft_strjoin(map, buf); // malloc
 		ft_free(buf); // free
 		ft_free(map); // free
 		map = new;
+		ft_printf("In get_map\n");
+		ft_printf("[map]\n%s\n", map);
 	}
-	if (map)
-		ft_free(map);
 	close(fd);
 	return (map);
 }

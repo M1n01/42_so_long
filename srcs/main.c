@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 01:14:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 01:45:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	so_long(char *file)
 	ft_printf("[map]\n%s\n", map);
 	// mlx(map);
 	ft_free(map);
+	system("leaks so_long");
 	return ;
 }
