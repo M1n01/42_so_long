@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 12:46:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 13:04:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool	check_map(char *map)
 char	*get_map(char *file)
 {
 	int		fd;
-	static char	*map;
+	char	*map;
 	char	*buf;
 	char	*new;
 	ssize_t	read_size;
@@ -110,10 +110,8 @@ char	*get_map(char *file)
 	if (fd < 0)
 		ft_error("Failed to open file");
 	read_size = 1;
-	int	count = 0;
 	while (read_size > 0)
 	{
-		ft_printf("loop count: %d\n", count++);
 		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
 		if (buf == NULL)
 			ft_error("malloc failed");
@@ -128,8 +126,6 @@ char	*get_map(char *file)
 		ft_free(buf); // free
 		ft_free(map); // free
 		map = new;
-		ft_printf("In get_map\n");
-		ft_printf("[map]\n%s\n", map);
 	}
 	close(fd);
 	return (map);
