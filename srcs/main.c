@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 16:54:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 17:27:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+#include <stdio.h>
 
 // int	deal_key(int key, void *param)
 // {
