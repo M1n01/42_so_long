@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:09:31 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:36:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 21:38:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_realloc(void *p, size_t size)
 		return (NULL);
 	new_data = malloc(size);
 	if (new_data == NULL)
-		exit(1);
+		ft_error("malloc failed");
 	if (p != NULL)
 	{
 		ft_memcpy(new_data, p, size);

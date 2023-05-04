@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 17:39:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 21:40:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,32 +97,13 @@ bool	check_map(char *map)
 	return (check_obj(map));
 }
 
-char	*my_strjoin(char *s1, char *s2)
-{
-	size_t	len1;
-	size_t	len2;
-	char	*str;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	str = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (str == NULL)
-		ft_error("malloc failed");
-	ft_memcpy(str, s1, len1);
-	ft_memcpy(str + len1, s2, len2 + 1);
-	// ft_free(s1);
-	ft_free(s2);
-	return (str);
-}
-
 char	*get_map(char *file)
 {
 	int		fd;
 	char	*map;
 	char	*buf;
-	// char	*new;
+	char	*tmp;
+	size_t	len;
 	ssize_t	read_size;
 
 	map = NULL;
@@ -130,25 +111,40 @@ char	*get_map(char *file)
 	if (fd < 0)
 		ft_error("Failed to open file");
 	read_size = 1;
-	puts("read_size");
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
+	if (buf == NULL)
+		ft_error("malloc failed");
 	while (read_size > 0)
 	{
-		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
-		if (buf == NULL)
-			ft_error("malloc failed");
+		ft_bzero(buf, BUFFER_SIZE + 1);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 			ft_error("Failed to read file");
+		printf("read_size: %ld\n", read_size);
 		buf[read_size] = '\0';
 		printf("loop\n");
 		if (map == NULL)
 		{
 			map = ft_strdup(buf); // malloc
-			ft_free(buf); // free
+			puts("dup");
 		}
-		else if (*buf != '\0')
-			map = my_strjoin(map, buf); // malloc
+		else
+		{
+			len = ft_strlen(map);
+			printf("size:%zd\n", len + ft_strlen(buf) + 1);
+			tmp = ft_realloc(map, len + ft_strlen(buf) + 1); // malloc
+			if (tmp == NULL)
+				ft_error("malloc failed");
+			// puts("memcpy");
+			ft_memcpy(tmp + len, buf, ft_strlen(buf) + 1);
+			// ft_free(map); // free
+			puts("join");
+			map = tmp;
+		}
+		printf("[map]\n%s\n", map);
 	}
+	ft_free(buf); // free
+	puts("close");
 	close(fd);
 	return (map);
 }
