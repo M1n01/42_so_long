@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:17:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/01 14:21:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:26:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (str == NULL)
 		ft_error("malloc failed");
 	ft_memcpy(str, s1, len1);
-	ft_strlcat(str + len1, s2, len2 + 1);
+	ft_memcpy(str + len1, s2, len2 + 1);
 	return (str);
 }
