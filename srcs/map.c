@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 16:37:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/04 16:41:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,26 @@ bool	check_map(char *map)
 	return (check_obj(map));
 }
 
+char	*my_strjoin(char *s1, char *s2)
+{
+	size_t	len1;
+	size_t	len2;
+	char	*str;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (str == NULL)
+		ft_error("malloc failed");
+	ft_memcpy(str, s1, len1);
+	ft_memcpy(str + len1, s2, len2 + 1);
+	ft_free(s1);
+	ft_free(s2);
+	return (str);
+}
+
 char	*get_map(char *file)
 {
 	int		fd;
@@ -120,11 +140,12 @@ char	*get_map(char *file)
 			ft_error("Failed to read file");
 		buf[read_size] = '\0';
 		if (map == NULL)
+		{
 			map = ft_strdup(buf); // malloc
+			ft_free(buf); // free
+		}
 		else
-			new = ft_strjoin(map, buf); // malloc
-		ft_free(buf); // free
-		map = new;
+			map = my_strjoin(map, buf); // malloc
 	}
 	close(fd);
 	return (map);
