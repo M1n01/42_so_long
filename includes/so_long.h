@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 22:41:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:43:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include "libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+// # include "../minilibx-linux/mlx.h"
+// # include "../minilibx-linux/mlx_int.h"
 // #include "debug.h"
 
 typedef struct s_mlx

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 22:29:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:55:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,7 @@ static size_t	count_map_height(char *map)
 	while (map[i] != '\0')
 	{
 		if (map[i] == '\n')
-		{
-			if (map[i + 1] == '\0')
-			{
-				ft_free(map);
-				ft_error("Invalid height map");
-			}
 			height++;
-		}
 		i++;
 	}
 	return (height);
