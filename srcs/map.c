@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 16:48:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:03:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ char	*get_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error("Failed to open file");
-	read_size = 1;
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
 	if (buf == NULL)
 		ft_error("malloc failed");
@@ -125,9 +124,8 @@ char	*get_map(char *file)
 		map = tmp;
 	}
 	printf("[buf]: %zd\n%s\n", read_size, buf);
-	printf("[map]\n%s\n", map);
+	// printf("[map]\n%s\n", map);
 	ft_free(buf);
-	ft_free(map);
 	close(fd);
 	puts("close");
 	return (map);
