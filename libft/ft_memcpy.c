@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:26:17 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:35:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:22:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
-	int		*to;
-	int		*from;
+	size_t		i;
+	char		*to;
+	const char	*from;
 
-	to = (int *)dst;
-	from = (int *)src;
+	to = (char *)dst;
+	from = (const char *)src;
 	if (dst == NULL && src == NULL)
 		return (NULL);
 	i = 0;
