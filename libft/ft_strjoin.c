@@ -6,11 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:17:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 22:11:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 22:13:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
+#include <string.h>
+#include <stdlib.h>
 
 char	*ft_strjoin(char *s1, char *s2)
 {
