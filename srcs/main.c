@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 21:40:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:22:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	so_long(char *file)
 	// 	ft_error("Invalid map");
 	// mlx(map);
 	// ft_free(map);
+	puts("segfo??");
 	system("leaks so_long");
 	return ;
 }

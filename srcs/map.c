@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/04 21:40:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:04:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,23 +120,24 @@ char	*get_map(char *file)
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 			ft_error("Failed to read file");
-		printf("read_size: %ld\n", read_size);
 		buf[read_size] = '\0';
-		printf("loop\n");
+		printf("[buf]\n%s\n", buf);
 		if (map == NULL)
 		{
 			map = ft_strdup(buf); // malloc
-			puts("dup");
+			puts("complete dup");
 		}
 		else
 		{
 			len = ft_strlen(map);
-			printf("size:%zd\n", len + ft_strlen(buf) + 1);
+			printf("maplen: %zd, realloc size: %zd\n", len, len + ft_strlen(buf) + 1);
 			tmp = ft_realloc(map, len + ft_strlen(buf) + 1); // malloc
 			if (tmp == NULL)
 				ft_error("malloc failed");
-			// puts("memcpy");
+			puts("complete realloc");
 			ft_memcpy(tmp + len, buf, ft_strlen(buf) + 1);
+			puts("complete memcpy");
+			printf("[tmp]\n%s\n", tmp);
 			// ft_free(map); // free
 			puts("join");
 			map = tmp;
@@ -144,7 +145,7 @@ char	*get_map(char *file)
 		printf("[map]\n%s\n", map);
 	}
 	ft_free(buf); // free
-	puts("close");
 	close(fd);
+	puts("close");
 	return (map);
 }
