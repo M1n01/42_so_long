@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 15:39:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:55:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	so_long(char *file)
 	printf("[complete map]\n%s\n", map);
 	ft_free(map);
 	puts("segfo??");
-	system("leaks so_long");
+	// system("leaks so_long");
 	return ;
 }
