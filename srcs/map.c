@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 17:09:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:09:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ bool	check_map(char *map)
 char	*get_map(char *file)
 {
 	int		fd;
-	// char	*map;
+	char	*map;
 	// char	*tmp;
 	char	*buf;
 	ssize_t	read_size;
 
-	map = ft_strdup("");
+	map = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error("Failed to open file");
