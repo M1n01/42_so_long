@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 15:45:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 16:32:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,8 @@ char	*get_map(char *file)
 {
 	int		fd;
 	char	*map;
-	char	*buf;
 	char	*tmp;
-	size_t	len;
+	char	*buf;
 	ssize_t	read_size;
 
 	map = NULL;
@@ -114,38 +113,20 @@ char	*get_map(char *file)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // malloc
 	if (buf == NULL)
 		ft_error("malloc failed");
+	read_size = 1;
 	while (read_size > 0)
 	{
-		ft_bzero(buf, BUFFER_SIZE + 1);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 			ft_error("Failed to read file");
-		buf[read_size] = '\0';
-		printf("[read_size]: %zd\n", read_size);
-		printf("[buf]: %zd\n%s\n", ft_strlen(buf), buf);
-		if (map == NULL)
-		{
-			map = ft_strdup(buf); // malloc
-			puts("complete dup");
-		}
-		else
-		{
-			len = ft_strlen(map);
-			printf("maplen: %zd, realloc size: %zd\n", len, len + ft_strlen(buf) + 1);
-			tmp = ft_realloc(map, len + ft_strlen(buf) + 1); // malloc
-			if (tmp == NULL)
-				ft_error("malloc failed");
-			puts("complete realloc");
-			ft_memcpy(tmp + len, buf, ft_strlen(buf) + 1);
-			puts("complete memcpy");
-			printf("[tmp]\n%s\n", tmp);
-			// ft_free(map); // free
-			puts("join");
-			map = tmp;
-		}
-		printf("[map]: %zd\n%s\n", ft_strlen(map), map);
+		tmp = ft_strjoin(map, buf);
+		ft_free(map);
+		map = tmp;
 	}
-	ft_free(buf); // free
+	printf("[buf]: %zd\n%s\n", read_size, buf);
+	printf("[map]\n%s\n", map);
+	ft_free(buf);
+	ft_free(map);
 	close(fd);
 	puts("close");
 	return (map);
