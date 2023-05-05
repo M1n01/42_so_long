@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 17:35:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:40:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,11 +121,13 @@ char	*get_map(char *file)
 		buf[read_size] = '\0';
 		tmp = ft_strjoin(map, buf);
 		printf("[tmp]\n%s\n", tmp);
+		if (map != NULL)
+			free(map);
 		map = tmp;
 	}
 	printf("[buf]: %zd\n%s\n", read_size, buf);
 	// free(map);
-	// free(buf);
+	free(buf);
 	close(fd);
 	puts("close");
 	return (map);
