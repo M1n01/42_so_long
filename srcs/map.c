@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 15:04:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 15:43:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ char	*get_map(char *file)
 		if (read_size < 0)
 			ft_error("Failed to read file");
 		buf[read_size] = '\0';
-		printf("[buf]\n%s\n", buf);
+		printf("[buf]: %zd\n%s\n", ft_strlen(buf), buf);
 		if (map == NULL)
 		{
 			map = ft_strdup(buf); // malloc
