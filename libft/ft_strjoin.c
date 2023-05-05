@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:17:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 17:36:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:37:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_memcpy(str, s1, len1);
 	ft_memcpy(str + len1, s2, len2);
 	str[len1 + len2] = '\0';
-	ft_free(s1);
+	if (s1 != NULL)
+		ft_free(s1);
 	return (str);
 }
