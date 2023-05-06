@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 19:56:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 19:57:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ bool	check_obj(char *map)
 		else if (map[i] == 'C')
 			item++;
 		else if (map[i] != '1' && map[i] != '0' && map[i] != '\n')
+		{
+			printf("invalid obj: %c\n", map[i]);
 			return (false);
+		}
 		i++;
 	}
 	if (start != 1 || goal != 1 || item == 0)
