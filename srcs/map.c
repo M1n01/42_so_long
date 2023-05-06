@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/05 22:55:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 18:10:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static size_t	count_map_width(char *map)
 	width = 0;
 	while (map[i] != '\0')
 	{
+		if (map[i] == '\n')
+			i++;
 		j = 0;
 		while (map[i+j] != '\n' && map[i+j] != '\0')
 			j++;
 		if (width == 0)
 			width = j;
 		else if (width != j)
-		{
-			free(map);
-			ft_error("Invalid width map");
-		}
-		i += j + 1;
+			ft_error("Invalid map");
+		i += j;
 	}
+	// printf("%zu\n", j);
 	return (width);
 }
 
