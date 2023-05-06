@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/03 12:33:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 21:55:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	deal_key(int key, void *param)
 {
-	ft_putchar('X');
-	(void)key;
+	// ft_putchar('X');
+	printf("%d\n", key);
 	(void)param;
 	return (0);
 }
@@ -55,5 +55,6 @@ void	mlx(char *map)
 	mlx_loop(mlx->mlx_ptr);
 	// 最初のうちはCtrl+Cで終了
 	// のちに終了するプログラムを書く
+	free(mlx);
 	return ;
 }
