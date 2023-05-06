@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 18:10:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 19:54:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ static size_t	count_map_width(char *map)
 		if (width == 0)
 			width = j;
 		else if (width != j)
-			ft_error("Invalid map");
+			ft_error("Invalid width map");
 		i += j;
 	}
-	// printf("%zu\n", j);
 	return (width);
 }
 
@@ -86,7 +85,10 @@ bool	check_obj(char *map)
 bool	check_map(char *map)
 {
 	if (count_map_width(map) == count_map_height(map))
+	{
+		printf("not rectangle\n");
 		return (false);
+	}
 	return (check_obj(map));
 }
 
