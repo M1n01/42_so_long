@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 19:54:07 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 19:56:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ bool	check_obj(char *map)
 		i++;
 	}
 	if (start != 1 || goal != 1 || item == 0)
+	{
+		printf("no start or goal or item\n");
 		return (false);
+	}
 	return (true);
 }
 
