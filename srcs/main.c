@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 18:19:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 20:27:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	so_long(char *file)
 	char	*map;
 
 	map = get_map(file);
-	if (check_map(map) == false)
-		ft_error("Invalid map");
+	// if (check_map(map) == false)
+	// 	ft_error("Invalid map");
 	mlx(map);
 	printf("[complete map]\n%s\n", map);
 	ft_free(map);
