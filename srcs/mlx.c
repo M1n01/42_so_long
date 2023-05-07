@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 23:31:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 01:22:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,14 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	render_next_frame(void *YourStruct);
-
 void	mlx(char *map)
 {
 	t_mlx	*mlx;
 	// t_data	img;
+	void	*img;
+	int		width;
+	int		height;
+	char	*relative_path = "./img/kirby.png";
 
 	(void)map;
 	mlx = malloc(sizeof(t_mlx));
@@ -108,17 +110,15 @@ void	mlx(char *map)
 	mlx->height = 1920;
 	mlx->width = 1080;
 	mlx->mlx_ptr = mlx_init();
+	img = mlx_xpm_file_to_image(mlx->mlx_ptr, relative_path, &width, &height);
 	// mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	// draw_map(map, mlx);
 	// img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// ft_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img, 0, 0);
-	mlx_loop_hook(mlx->mlx_ptr, render_next_frame, YourStruct);
-	// mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
+	mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
 	mlx_loop(mlx->mlx_ptr);
-	// 最初のうちはCtrl+Cで終了
-	// のちに終了するプログラムを書く
 	free(mlx);
 	return ;
 }
