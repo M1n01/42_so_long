@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 15:09:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 15:41:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	draw_obj(t_mlx *mlx, int x, int y, int color)
 	int	j;
 
 	i = 0;
-	while (i < 10)
+	while (i < 1)
 	{
 		j = 0;
-		while (j < 10)
+		while (j < 1)
 		{
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, 10 * x + i, 10 * y + j, color);
+			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x + i, y + j, color);
 			j++;
 		}
 		i++;
@@ -44,10 +44,12 @@ void	draw_map(char *map, t_mlx *mlx)
 	size_t	i;
 	size_t	j;
 	size_t	width;
+	size_t	height;
 
 	width = count_map_width(map);
+	height = count_map_height(map);
 	i = 0;
-	while (i < count_map_height(map))
+	while (i < height)
 	{
 		j = 0;
 		while (j < width)
@@ -95,7 +97,7 @@ void	mlx(char *map)
 	mlx->width = 1000;
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
-	draw_map(map, mlx);
+	// draw_map(map, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	// 最初のうちはCtrl+Cで終了
 	// のちに終了するプログラムを書く
