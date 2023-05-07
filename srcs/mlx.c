@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 21:55:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 22:24:27 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,32 @@ int	deal_key(int key, void *param)
 	return (0);
 }
 
+// map
 void	draw_map(char *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
 
-	(void)map;
+	// (void)map;
+	// i = 0;
+	// while (i < mlx->width)
+	// {
+	// 	j = 0;
+	// 	while (j < mlx->height)
+	// 	{
+	// 		mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 127);
+	// 		mlx_key_hook(mlx->win_ptr, deal_key, NULL);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 	i = 0;
-	while (i < mlx->width)
+	while (i < count_map_width(map))
 	{
 		j = 0;
-		while (j < mlx->height)
+		while (j < count_map_height(map))
 		{
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 127);
-			mlx_key_hook(mlx->win_ptr, deal_key, NULL);
+			if (map[i + j])
 			j++;
 		}
 		i++;

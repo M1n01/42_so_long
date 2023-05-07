@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:37:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/06 22:37:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*get_save(char *save);
 
 char	*get_next_line(int fd)
 {
-	char		*res;
+	char		*line;
 	static char	*save;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -31,31 +31,34 @@ char	*get_next_line(int fd)
 		save[0] = '\0';
 	}
 	save = gnl_read(save, fd);
-	res = get_line(save);
+	line = get_line(save);
 	save = get_save(save);
-	return (res);
+	return (line);
 }
 
 static char	*gnl_read(char *save, int fd)
 {
-	ssize_t	rc;
+	ssize_t	read_size;
 	char	*buf;
+	char	*tmp;
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
 		ft_error("malloc failed");
-	rc = 1;
-	while (ft_strchr(save, '\n') == NULL && rc != 0)
+	read_size = 1;
+	while (ft_strchr(save, '\n') == NULL && read_size != 0)
 	{
-		rc = read(fd, buf, BUFFER_SIZE);
-		if (rc == -1)
+		ft_bzero(buf, BUFFER_SIZE + 1);
+		read_size = read(fd, buf, BUFFER_SIZE);
+		if (read_size == -1)
 		{
 			ft_free(buf);
 			ft_free(save);
 			ft_error("read failed");
 		}
-		buf[rc] = '\0';
-		save = ft_strjoin(save, buf);
+		tmp = ft_strjoin(save, buf);
+		ft_free(save);
+		save = tmp;
 	}
 	ft_free(buf);
 	return (save);
@@ -77,10 +80,10 @@ static char	*get_line(char *save)
 		ft_strlcpy(line, save, ft_strlen(save) + 1);
 		return (line);
 	}
-	line = malloc(sizeof(char) * (find - save + 2));
+	line = malloc(sizeof(char) * (find - save + 1)); // 改行文字は含まない
 	if (line == NULL)
 		ft_error("malloc failed");
-	ft_strlcpy(line, save, find - save + 2);
+	ft_strlcpy(line, save, find - save + 1);
 	return (line);
 }
 
