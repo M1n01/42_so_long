@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 14:29:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 14:46:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,27 @@ void	draw_map(char *map, t_mlx *mlx)
 		{
 			if (map[i * width + j] == '1')
 			{
-				draw_obj(mlx, i, j, 0xFFFFFF);
+				draw_obj(mlx, j, i, 0xFFFFFF);
 				puts("wall");
 			}
 			else if (map[i * width + j] == '0')
 			{
-				draw_obj(mlx, i, j, 0x000000);
+				draw_obj(mlx, j, i, 0x000000);
 				puts("wall");
 			}
 			else if (map[i * width + j] == 'P')
 			{
-				draw_obj(mlx, i, j, 0xFF0000);
+				draw_obj(mlx, j, i, 0xFF0000);
 				puts("wall");
 			}
 			else if (map[i * width + j] == 'C')
 			{
-				draw_obj(mlx, i, j, 0x00FF00);
+				draw_obj(mlx, j, i, 0x00FF00);
 				puts("wall");
 			}
 			else if (map[i * width + j] == 'E')
 			{
-				draw_obj(mlx, i, j, 0x0000FF);
+				draw_obj(mlx, j, i, 0x0000FF);
 				puts("wall");
 			}
 			mlx_key_hook(mlx->win_ptr, deal_key, NULL);
