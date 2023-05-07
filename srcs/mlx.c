@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 22:23:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 22:41:27 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,20 @@ void	draw_map(char *map, t_mlx *mlx)
 	}
 }
 
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
 void	mlx(char *map)
 {
 	t_mlx	*mlx;
 	t_data	img;
 
+	(void)map;
 	mlx = malloc(sizeof(t_mlx));
 	if (mlx == NULL)
 		ft_error("Malloc failed");
@@ -101,8 +110,8 @@ void	mlx(char *map)
 	// draw_map(map, mlx);
 	img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	(void)img;
-	(void)map;
+	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img, 0, 0);
 	mlx_loop(mlx->mlx_ptr);
 	// 最初のうちはCtrl+Cで終了
 	// のちに終了するプログラムを書く
