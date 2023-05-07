@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 23:16:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 23:18:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,8 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	win_close(int keycode, t_mlx *mlx)
 {
-	// if (keycode == 53)
-	printf("%d\n", keycode);
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	if (keycode == ESC)
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	return (0);
 }
 
