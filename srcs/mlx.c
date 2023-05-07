@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 22:20:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 22:23:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	draw_map(char *map, t_mlx *mlx)
 void	mlx(char *map)
 {
 	t_mlx	*mlx;
-	void	*img;
+	t_data	img;
 
 	mlx = malloc(sizeof(t_mlx));
 	if (mlx == NULL)
@@ -99,7 +99,8 @@ void	mlx(char *map)
 	mlx->mlx_ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	// draw_map(map, mlx);
-	img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
+	img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	(void)img;
 	(void)map;
 	mlx_loop(mlx->mlx_ptr);
