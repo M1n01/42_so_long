@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 14:46:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 14:54:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_obj(t_mlx *mlx, int x, int y, int color)
 		j = 0;
 		while (j < 50)
 		{
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x + i, y + j, color);
+			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, 50 * x + i, 50 * y + j, color);
 			j++;
 		}
 		i++;
