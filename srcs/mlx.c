@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 01:22:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 01:22:39 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	mlx(char *map)
 	mlx->width = 1080;
 	mlx->mlx_ptr = mlx_init();
 	img = mlx_xpm_file_to_image(mlx->mlx_ptr, relative_path, &width, &height);
+	(void)img;
 	// mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	// draw_map(map, mlx);
 	// img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
