@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 14:27:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 14:28:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_map(char *map, t_mlx *mlx)
 
 	width = count_map_width(map);
 	i = 0;
-	while (map[i * width + j] != '\0')
+	while (map[i] != '\0')
 	{
 		j = 0;
 		while (j < width)
