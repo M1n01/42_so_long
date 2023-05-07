@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 11:50:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 12:19:30 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	draw_map(char *map, t_mlx *mlx)
 	// }
 	width = count_map_width(map);
 	i = 0;
-	while (i < width)
+	while (i < count_map_height(map))
 	{
 		j = 0;
-		while (j < count_map_height(map))
+		while (j < width)
 		{
 			if (map[i * width + j] == '1')
 				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0xFFFFFF);
@@ -59,7 +59,7 @@ void	draw_map(char *map, t_mlx *mlx)
 				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x0000FF);
 			j++;
 		}
-		i++;
+		i += j;
 	}
 }
 
