@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 21:53:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 11:50:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static size_t	count_map_width(char *map)
+size_t	count_map_width(char *map)
 {
 	size_t	i;
 	size_t	j;
@@ -37,7 +37,7 @@ static size_t	count_map_width(char *map)
 	return (width);
 }
 
-static size_t	count_map_height(char *map)
+size_t	count_map_height(char *map)
 {
 	size_t	i;
 	size_t	height;
