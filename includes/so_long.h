@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 23:18:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 23:26:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ size_t	count_map_width(char *map);
 size_t	count_map_height(char *map);
 bool	check_map(char *map);
 char	*get_map(char *file);
+
+int	win_close(int keycode, t_mlx *mlx);
+
 void	mlx(char *map);
 
 #endif
