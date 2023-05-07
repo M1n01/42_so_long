@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 22:41:27 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 22:41:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	mlx(char *map)
 	// draw_map(map, mlx);
 	img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	ft_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img, 0, 0);
 	mlx_loop(mlx->mlx_ptr);
 	// 最初のうちはCtrl+Cで終了
