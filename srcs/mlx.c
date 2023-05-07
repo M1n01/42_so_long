@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 22:24:27 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 11:48:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	draw_map(char *map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
+	size_t	width;
 
 	// (void)map;
 	// i = 0;
@@ -39,13 +40,23 @@ void	draw_map(char *map, t_mlx *mlx)
 	// 	}
 	// 	i++;
 	// }
+	width = count_map_width(map);
 	i = 0;
-	while (i < count_map_width(map))
+	while (i < width)
 	{
 		j = 0;
 		while (j < count_map_height(map))
 		{
-			if (map[i + j])
+			if (map[i * width + j] == '1')
+				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0xFFFFFF);
+			else if (map[i * width + j] == '0')
+				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x000000);
+			else if (map[i * width + j] == 'P')
+				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0xFF0000);
+			else if (map[i * width + j] == 'C')
+				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x00FF00);
+			else if (map[i * width + j] == 'E')
+				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x0000FF);
 			j++;
 		}
 		i++;
