@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 23:00:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 23:01:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	close(int keycode, t_mlx *mlx)
 {
+	(void)keycode;
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 	return (0);
 }
@@ -103,7 +104,7 @@ int	close(int keycode, t_mlx *mlx)
 void	mlx(char *map)
 {
 	t_mlx	*mlx;
-	t_data	img;
+	// t_data	img;
 
 	(void)map;
 	mlx = malloc(sizeof(t_mlx));
