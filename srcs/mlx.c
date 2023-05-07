@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/07 12:23:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/07 13:05:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@ int	deal_key(int key, void *param)
 	printf("%d\n", key);
 	(void)param;
 	return (0);
+}
+
+void	draw_obj(t_mlx *mlx, int x, int y, int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 10)
+	{
+		j = 0;
+		while (j < 10)
+		{
+			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x + i, y + j, color);
+			j++;
+		}
+		i++;
+	}
 }
 
 // map
@@ -35,15 +53,15 @@ void	draw_map(char *map, t_mlx *mlx)
 		while (j < width)
 		{
 			if (map[i * width + j] == '1')
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0xFFFFFF);
+				draw_obj(mlx, i, j, 0xFFFFFF);
 			else if (map[i * width + j] == '0')
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x000000);
+				draw_obj(mlx, i, j, 0x000000);
 			else if (map[i * width + j] == 'P')
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0xFF0000);
+				draw_obj(mlx, i, j, 0xFF0000);
 			else if (map[i * width + j] == 'C')
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x00FF00);
+				draw_obj(mlx, i, j, 0x00FF00);
 			else if (map[i * width + j] == 'E')
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, i, j, 0x0000FF);
+				draw_obj(mlx, i, j, 0x0000FF);
 			mlx_key_hook(mlx->win_ptr, deal_key, NULL);
 			j++;
 		}
