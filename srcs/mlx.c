@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 20:45:41 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:47:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ int	deal_key(int key, void *param)
 // map
 void	draw_map(char *map, t_game *game)
 {
-	size_t	i;
-	size_t	j;
-	size_t	width;
-	size_t	height;
+	// size_t	i;
+	// size_t	j;
+	// size_t	width;
+	// size_t	height;
 
-	width = count_map_width(map);
-	height = count_map_height(map);
-	printf("width: %zu, height: %zu\n", width, height);
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j <= width)
-		{
+	// width = count_map_width(map);
+	// height = count_map_height(map);
+	// printf("width: %zu, height: %zu\n", width, height);
+	// i = 0;
+	// while (i < height)
+	// {
+	// 	j = 0;
+	// 	while (j <= width)
+	// 	{
 			// if (map[i * width + j] == '1')
 			// {
 			// 	puts("draw wall");
@@ -62,10 +62,11 @@ void	draw_map(char *map, t_game *game)
 			// 	printf("i: %zu, j: %zu\n", i, j);
 			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, j, i);
 			// }
-			j++;
-		}
-		i++;
-	}
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 6, 10);
 	mlx_key_hook(game->win_ptr, deal_key, NULL);
 }
 
