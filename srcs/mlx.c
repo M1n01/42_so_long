@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 18:32:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 18:36:27 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,20 @@
 // 	*(unsigned int *)dst = color;
 // }
 
-void	init_game(t_game *game)
+t_game	*init_game(char *map)
 {
+	t_game	*game;
+
+	game = malloc(sizeof(t_game));
+	if (game == NULL)
+		ft_error("Malloc failed");
 	game->ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
 	game->width = 1920;
 	game->height = 1080;
+	game->map = map;
+	game->obj = NULL;
+	return (game);
 }
 
 void	newgame(char *map)
@@ -112,10 +120,7 @@ void	newgame(char *map)
 	// t_obj	*exit;
 
 	(void)map;
-	game = malloc(sizeof(t_game));
-	if (game == NULL)
-		ft_error("Malloc failed");
-	init_game(game->ptr);
+	game = init_game(map);
 	// jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
 	// wall = init_obj("./img/sprites/Walls/wall.xpm");
 	// exit = init_obj("./img/sprites/Portal/portal.xpm");
