@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 18:36:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 18:37:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_game	*init_game(char *map)
 	game->width = 1920;
 	game->height = 1080;
 	game->map = map;
-	game->objs = NULL;
+	// game->objs = NULL;
 	return (game);
 }
 
