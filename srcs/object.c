@@ -6,16 +6,29 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 12:53:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:06:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
 
-void	init_obj(t_obj *obj)
+t_obj	*init_obj(char *relative_path)
 {
+	t_obj *obj;
+
+	obj = malloc(sizeof(t_obj));
+	if (!obj)
+		ft_error("Malloc failed");
 	obj->img = NULL;
 	obj->width = 0;
 	obj->height = 0;
-	obj->relative_path = NULL;
+	obj->path = relative_path;
+	return (obj);
+}
+
+void	put_obj(t_mlx *mlx, t_obj *obj, int x, int y)
+{
+	obj->img = mlx_xpm_file_to_image(mlx->mlx_ptr, obj->relative_path,\
+		&obj->width, &obj->height);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, obj->img, x, y);
 }

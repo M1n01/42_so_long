@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 12:53:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:06:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ char	*get_map(char *file);
 
 int	win_close(int keycode, t_mlx *mlx);
 
-void	init_obj(t_obj *obj);
+t_obj	*init_obj(char *relative_path);
+void	put_obj(t_mlx *mlx, t_obj *obj, int x, int y);
 
 void	mlx(char *map);
 

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 13:35:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:16:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,9 @@ void	mlx(char *map)
 	t_mlx	*mlx;
 	// t_data	img;
 	t_obj	*jiki;
-	char	*relative_path = "./img/sprites/Pac-Man/pac_closed.xpm";
+	t_obj	*wall;
+	t_obj	*coin;
+	t_obj	*exit;
 
 	(void)map;
 	mlx = malloc(sizeof(t_mlx));
@@ -115,20 +117,20 @@ void	mlx(char *map)
 		ft_error("Malloc failed");
 	init_mlx(mlx);
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
-	jiki = malloc(sizeof(t_obj));
-	if (jiki == NULL)
-		ft_error("Malloc failed");
-	init_obj(jiki);
-	jiki->relative_path = relative_path;
-	jiki->img = mlx_xpm_file_to_image(mlx->mlx_ptr, jiki->relative_path, &jiki->width, &jiki->height);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, jiki->img, 0, 0);
-	// draw_map(map, mlx);
-	// img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
-	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	// ft_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	// mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img.img, 0, 0);
+	jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
+	wall = init_obj("./img/sprites/Walls/wall.xpm");
+	exit = init_obj("./img/sprites/Portal/portal.xpm");
+	coin = init_obj("./img/sprites/Pacdots/pacdot_powerup.xpm");
+	put_obj(mlx, jiki, 10, 10);
+	put_obj(mlx, wall, 0, 0);
+	put_obj(mlx, exit, 20, 20);
+	put_obj(mlx, coin, 30, 30);
 	mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
 	mlx_loop(mlx->mlx_ptr);
-	free(mlx);
+	ft_free(jiki);
+	ft_free(wall);
+	ft_free(exit);
+	ft_free(coin);
+	ft_free(mlx);
 	return ;
 }
