@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 20:29:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:37:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,25 @@ void	draw_map(char *map, t_game *game)
 				printf("i: %zu, j: %zu\n", i, j);
 				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, j, i);
 			}
-			else if (map[i * width + j] == 'P')
-			{
-				puts("draw player");
-				printf("i: %zu, j: %zu\n", i, j);
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, j, i);
-			}
-			else if (map[i * width + j] == 'C')
-			{
-				puts("draw collectible");
-				printf("i: %zu, j: %zu\n", i, j);
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, j, i);
-			}
-			else if (map[i * width + j] == 'E')
-			{
-				puts("draw exit");
-				printf("i: %zu, j: %zu\n", i, j);
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, j, i);
-			}
-			mlx_key_hook(game->win_ptr, deal_key, NULL);
+			// else if (map[i * width + j] == 'P')
+			// {
+			// 	puts("draw player");
+			// 	printf("i: %zu, j: %zu\n", i, j);
+			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, j, i);
+			// }
+			// else if (map[i * width + j] == 'C')
+			// {
+			// 	puts("draw collectible");
+			// 	printf("i: %zu, j: %zu\n", i, j);
+			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, j, i);
+			// }
+			// else if (map[i * width + j] == 'E')
+			// {
+			// 	puts("draw exit");
+			// 	printf("i: %zu, j: %zu\n", i, j);
+			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, j, i);
+			// }
+			// mlx_key_hook(game->win_ptr, deal_key, NULL);
 			j++;
 		}
 		i++;
