@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 18:38:41 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:05:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,39 +103,24 @@ t_game	*init_game(char *map)
 		ft_error("Malloc failed");
 	game->ptr = mlx_init();
 	game->win_ptr = NULL;
-	game->width = 1920;
-	game->height = 1080;
+	game->width = 1440;
+	game->height = 900;
 	game->map = map;
-	// game->objs = NULL;
+	game->objs = init_objs(game);
 	return (game);
 }
 
 void	newgame(char *map)
 {
 	t_game	*game;
-	// t_data	img;
-	// t_obj	*jiki;
-	// t_obj	*wall;
-	// t_obj	*coin;
-	// t_obj	*exit;
 
 	(void)map;
 	game = init_game(map);
 	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
-	// jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
-	// wall = init_obj("./img/sprites/Walls/wall.xpm");
-	// exit = init_obj("./img/sprites/Portal/portal.xpm");
-	// coin = init_obj("./img/sprites/Pacdots/pacdot_powerup.xpm");
-	// put_obj(game, jiki, 100, 100);
-	// put_obj(mlx, wall, 0, 0);
-	// put_obj(mlx, exit, 20, 20);
-	// put_obj(mlx, coin, 30, 30);
-	// mlx_hook(game->win_ptr, 2, 1L<<0, win_close, game);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, 0, 0);
+	mlx_hook(game->win_ptr, 2, 1L<<0, win_close, game);
 	mlx_loop(game->ptr);
-	// ft_free(jiki);
-	// ft_free(wall);
-	// ft_free(exit);
-	// ft_free(coin);
+	destroy_objs(game);
 	ft_free(game);
 	return ;
 }

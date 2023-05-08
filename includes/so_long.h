@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 18:27:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:02:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 
 # define ESC 65307
 
-typedef struct s_obj
+typedef struct s_objs
 {
 	void	*wall;
 	void	*player;
 	void	*exit;
 	void	*collectible;
-}	t_obj;
+}	t_objs;
 
 typedef struct s_game
 {
@@ -38,7 +38,7 @@ typedef struct s_game
 	int		width;
 	int		height;
 	char	*map;
-	t_obj	objs;
+	t_objs	objs;
 }	t_game;
 
 size_t	count_map_width(char *map);
@@ -48,8 +48,7 @@ char	*get_map(char *file);
 
 int	win_close(int keycode, t_game *mlx);
 
-t_obj	*init_obj(char *relative_path);
-void	put_obj(t_game *mlx, t_obj *obj, int x, int y);
+t_objs	init_objs(t_game *game);
 
 void	newgame(char *map);
 
