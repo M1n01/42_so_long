@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 20:04:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:08:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_objs	init_objs(t_game *game)
 	objs.player = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
 	objs.wall = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Other/Wall/wall.xpm", &size, &size);
+		"./img/sprites/Other/Walls/wall.xpm", &size, &size);
 	objs.collectible = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Other/Pac-dots/pacdot_powerup.xpm", &size, &size);
 	objs.exit = mlx_xpm_file_to_image(game->ptr, \
