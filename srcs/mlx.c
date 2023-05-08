@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 20:14:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:15:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void	draw_map(char *map, t_game *game)
 		{
 			if (map[i * width + j] == '1')
 			{
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, 0, 0);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, j, i);
 			}
 			else if (map[i * width + j] == 'P')
 			{
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, 10, 10);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, j, i);
 			}
 			else if (map[i * width + j] == 'C')
 			{
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, 50, 100);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, j, i);
 			}
 			else if (map[i * width + j] == 'E')
 			{
-				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 100, 500);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, j, i);
 			}
 			mlx_key_hook(game->win_ptr, deal_key, NULL);
 			j++;
