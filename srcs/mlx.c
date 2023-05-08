@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 13:33:45 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 13:35:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	mlx(char *map)
 	init_obj(jiki);
 	jiki->relative_path = relative_path;
 	jiki->img = mlx_xpm_file_to_image(mlx->mlx_ptr, jiki->relative_path, &jiki->width, &jiki->height);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, jiki->img, 0, 0);
 	// draw_map(map, mlx);
 	// img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
