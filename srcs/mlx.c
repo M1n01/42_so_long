@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 01:22:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 12:57:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,25 +94,30 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	init_mlx(t_mlx *mlx)
+{
+	mlx->mlx_ptr = mlx_init();
+	mlx->win_ptr = NULL;
+	mlx->width = 1920;
+	mlx->height = 1080;
+}
+
 void	mlx(char *map)
 {
 	t_mlx	*mlx;
-	// t_data	img;
-	void	*img;
-	int		width;
-	int		height;
+	t_data	img;
+	t_obj	*jiki;
 	char	*relative_path = "./img/kirby.png";
 
 	(void)map;
 	mlx = malloc(sizeof(t_mlx));
 	if (mlx == NULL)
 		ft_error("Malloc failed");
-	mlx->height = 1920;
-	mlx->width = 1080;
-	mlx->mlx_ptr = mlx_init();
-	img = mlx_xpm_file_to_image(mlx->mlx_ptr, relative_path, &width, &height);
-	(void)img;
-	// mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
+	init_mlx(mlx);
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
+	init_obj(jiki);
+	jiki->relative_path = relative_path;
+	jiki->img = mlx_xpm_file_to_image(mlx->mlx_ptr, jiki->relative_path, jiki->width, jiki->height);
 	// draw_map(map, mlx);
 	// img.img = mlx_new_image(mlx->mlx_ptr, mlx->width, mlx->height);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
