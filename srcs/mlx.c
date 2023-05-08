@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 22:49:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 22:51:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	draw_map(char *map, t_game *game)
 		while (j <= width)
 		{
 			printf("%zd\n", i * width + j);
+			printf("%c\n", map[i * width + j]);
 			// if (map[i * width + j] == '1')
 			// {
 			// 	puts("draw wall");
