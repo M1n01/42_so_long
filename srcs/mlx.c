@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 22:49:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 22:49:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	draw_map(char *map, t_game *game)
 		}
 		i++;
 	}
-	// (void)map;
+	(void)map;
+	(void)game;
 	// mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 6, 10);
 	// mlx_key_hook(game->win_ptr, deal_key, NULL);
 }
