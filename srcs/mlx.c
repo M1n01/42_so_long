@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 15:33:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:34:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ void	mlx(char *map)
 	// put_obj(mlx, wall, 0, 0);
 	// put_obj(mlx, exit, 20, 20);
 	// put_obj(mlx, coin, 30, 30);
-	// mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
+	mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
 	mlx_loop(mlx->mlx_ptr);
-	// ft_free(jiki);
+	ft_free(jiki);
 	// ft_free(wall);
 	// ft_free(exit);
 	// ft_free(coin);
