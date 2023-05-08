@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 15:39:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 18:32:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,43 +94,42 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	init_mlx(t_mlx *mlx)
+void	init_game(t_game *game)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = NULL;
-	mlx->width = 1920;
-	mlx->height = 1080;
+	game->ptr = mlx_init();
+	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
+	game->width = 1920;
+	game->height = 1080;
 }
 
-void	mlx(char *map)
+void	newgame(char *map)
 {
-	t_mlx	*mlx;
+	t_game	*game;
 	// t_data	img;
-	t_obj	*jiki;
+	// t_obj	*jiki;
 	// t_obj	*wall;
 	// t_obj	*coin;
 	// t_obj	*exit;
 
 	(void)map;
-	mlx = malloc(sizeof(t_mlx));
-	if (mlx == NULL)
+	game = malloc(sizeof(t_game));
+	if (game == NULL)
 		ft_error("Malloc failed");
-	init_mlx(mlx);
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
-	jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
+	init_game(game->ptr);
+	// jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
 	// wall = init_obj("./img/sprites/Walls/wall.xpm");
 	// exit = init_obj("./img/sprites/Portal/portal.xpm");
 	// coin = init_obj("./img/sprites/Pacdots/pacdot_powerup.xpm");
-	put_obj(mlx, jiki, 100, 100);
+	// put_obj(game, jiki, 100, 100);
 	// put_obj(mlx, wall, 0, 0);
 	// put_obj(mlx, exit, 20, 20);
 	// put_obj(mlx, coin, 30, 30);
-	mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
-	mlx_loop(mlx->mlx_ptr);
-	ft_free(jiki);
+	mlx_hook(game->win_ptr, 2, 1L<<0, win_close, game);
+	mlx_loop(game->ptr);
+	// ft_free(jiki);
 	// ft_free(wall);
 	// ft_free(exit);
 	// ft_free(coin);
-	ft_free(mlx);
+	ft_free(game);
 	return ;
 }

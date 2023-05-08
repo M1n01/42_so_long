@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 21:53:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 18:25:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	so_long(char *file)
 	// if (check_map(map) == false)
 	// 	ft_error("Invalid map");
 	printf("[complete map]\n%s\n", map);
-	mlx(map);
+	newgame(map);
 	ft_free(map);
 	// system("leaks so_long");
 	return ;
