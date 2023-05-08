@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 15:34:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:35:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	mlx(char *map)
 	t_mlx	*mlx;
 	// t_data	img;
 	t_obj	*jiki;
-	// t_obj	*wall;
+	t_obj	*wall;
 	// t_obj	*coin;
 	// t_obj	*exit;
 
@@ -121,14 +121,14 @@ void	mlx(char *map)
 	// wall = init_obj("./img/sprites/Walls/wall.xpm");
 	// exit = init_obj("./img/sprites/Portal/portal.xpm");
 	// coin = init_obj("./img/sprites/Pacdots/pacdot_powerup.xpm");
-	put_obj(mlx, jiki, 10, 10);
-	// put_obj(mlx, wall, 0, 0);
+	put_obj(mlx, jiki, 100, 100);
+	put_obj(mlx, wall, 0, 0);
 	// put_obj(mlx, exit, 20, 20);
 	// put_obj(mlx, coin, 30, 30);
 	mlx_hook(mlx->win_ptr, 2, 1L<<0, win_close, mlx);
 	mlx_loop(mlx->mlx_ptr);
 	ft_free(jiki);
-	// ft_free(wall);
+	ft_free(wall);
 	// ft_free(exit);
 	// ft_free(coin);
 	ft_free(mlx);
