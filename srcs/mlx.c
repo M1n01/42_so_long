@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 15:35:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 15:35:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	mlx(char *map)
 	init_mlx(mlx);
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, mlx->width, mlx->height, "test");
 	jiki = init_obj("./img/sprites/Pac-Man/pac_closed.xpm");
-	// wall = init_obj("./img/sprites/Walls/wall.xpm");
+	wall = init_obj("./img/sprites/Walls/wall.xpm");
 	// exit = init_obj("./img/sprites/Portal/portal.xpm");
 	// coin = init_obj("./img/sprites/Pacdots/pacdot_powerup.xpm");
 	put_obj(mlx, jiki, 100, 100);
