@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 20:08:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 20:09:39 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ void	newgame(char *map)
 	game = init_game(map);
 	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, 0, 0);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, 10, 10);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, 50, 100);
+	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 100, 500);
 	mlx_hook(game->win_ptr, 2, 1L<<0, win_close, game);
 	mlx_loop(game->ptr);
 	destroy_objs(game);
