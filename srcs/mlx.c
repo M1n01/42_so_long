@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/08 13:01:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/08 13:33:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	mlx(char *map)
 	t_mlx	*mlx;
 	// t_data	img;
 	t_obj	*jiki;
-	char	*relative_path = "./img/kirby.png";
+	char	*relative_path = "./img/sprites/Pac-Man/pac_closed.xpm";
 
 	(void)map;
 	mlx = malloc(sizeof(t_mlx));
