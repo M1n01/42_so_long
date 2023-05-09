@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/09 10:03:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/09 10:05:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_map(char *map, t_game *game)
 	while (map[i * width + j] != '\0')
 	{
 		j = 0;
-		while (map[i * width + j] != '\n' && map[i * width + j] != '\0')
+		while (j <= width || map[i * width + j] != '\0')
 		{
 			printf("%zd\n", i * width + j);
 			printf("%c\n", map[i * width + j]);
@@ -64,8 +64,6 @@ void	draw_map(char *map, t_game *game)
 			// }
 			j++;
 		}
-		if (map[i * width + j] == '\n')
-			j++;
 		i++;
 	}
 	(void)map;
