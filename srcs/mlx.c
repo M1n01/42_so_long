@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/09 10:08:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/09 10:10:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,31 @@ void	draw_map(char *map, t_game *game)
 		j = 0;
 		while (j <= width && map[i * width + j] != '\0')
 		{
-			printf("%zd\n", i * width + j);
-			printf("%c\n", map[i * width + j]);
-			// if (map[i * width + j] == '1')
-			// {
-			// 	puts("draw wall");
-			// 	printf("i: %zu, j: %zu\n", i, j);
-			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, 32 * j, 32 * i);
-			// }
-			// else if (map[i * width + j] == 'P')
-			// {
-			// 	puts("draw player");
-			// 	printf("i: %zu, j: %zu\n", i, j);
-			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, 32 * j, 32 * i);
-			// 	puts("draw player end");
-			// }
-			// else if (map[i * width + j] == 'C')
-			// {
-			// 	puts("draw collectible");
-			// 	printf("i: %zu, j: %zu\n", i, j);
-			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, 32 * j, 32 * i);
-			// }
-			// else if (map[i * width + j] == 'E')
-			// {
-			// 	puts("draw exit");
-			// 	printf("i: %zu, j: %zu\n", i, j);
-			// 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 32 * j, 32 * i);
-			// }
+			if (map[i * width + j] == '1')
+			{
+				puts("draw wall");
+				printf("i: %zu, j: %zu\n", i, j);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.wall, 32 * j, 32 * i);
+			}
+			else if (map[i * width + j] == 'P')
+			{
+				puts("draw player");
+				printf("i: %zu, j: %zu\n", i, j);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, 32 * j, 32 * i);
+				puts("draw player end");
+			}
+			else if (map[i * width + j] == 'C')
+			{
+				puts("draw collectible");
+				printf("i: %zu, j: %zu\n", i, j);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.collectible, 32 * j, 32 * i);
+			}
+			else if (map[i * width + j] == 'E')
+			{
+				puts("draw exit");
+				printf("i: %zu, j: %zu\n", i, j);
+				mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.exit, 32 * j, 32 * i);
+			}
 			j++;
 		}
 		i++;
