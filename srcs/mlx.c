@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/09 10:05:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/09 10:05:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ void	draw_map(char *map, t_game *game)
 	size_t	i;
 	size_t	j;
 	size_t	width;
+	size_t	height;
 
 	width = count_map_width(map);
+	height = count_map_height(map);
 	printf("width: %zu\n", width);
 	i = 0;
-	while (map[i * width + j] != '\0')
+	while (i < height)
 	{
 		j = 0;
 		while (j <= width || map[i * width + j] != '\0')
