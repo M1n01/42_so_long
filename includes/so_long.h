@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 16:09:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:27:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ enum e_direction
 	RIGHT
 };
 
+typedef struct s_map
+{
+	char	*map;
+	size_t	width;
+	size_t	height;
+}	t_map;
+
 typedef struct s_objs
 {
 	void	*wall;
@@ -59,14 +66,14 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	void	*ptr;
-	void	*win_ptr;
-	int		width;
-	int		height;
-	char	*map;
-	t_objs	objs;
+	void		*ptr;
+	void		*win_ptr;
+	int			width;
+	int			height;
+	t_map		*map_info;
+	t_objs		objs;
 	t_player	player;
-	size_t	turn;
+	size_t		turn;
 }	t_game;
 
 size_t	count_map_width(char *map);
@@ -76,6 +83,7 @@ char	*get_map(char *file);
 
 t_objs	init_objs(t_game *game);
 void	destroy_objs(t_game *game);
+void	put_obj(t_game *game, int x, int y, char c);
 
 void	move(t_game *game, int dir);
 void	redraw_player(t_game *game);

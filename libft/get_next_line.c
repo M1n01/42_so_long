@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:20:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/06 22:37:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:25:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static char	*get_line(char *save)
 		ft_strlcpy(line, save, ft_strlen(save) + 1);
 		return (line);
 	}
-	line = malloc(sizeof(char) * (find - save + 1)); // 改行文字は含まない
+	line = malloc(sizeof(char) * (find - save + 1));
 	if (line == NULL)
 		ft_error("malloc failed");
 	ft_strlcpy(line, save, find - save + 1);
