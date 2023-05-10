@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 12:31:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 13:27:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ void	move(t_game *game, int dir)
 	printf("x: %d, y: %d\n", game->player.x, game->player.y);
 }
 
-void	put_player(t_game *game)
+void	redraw_player(t_game *game)
 {
+	t_player	player;
+
+	player = game->player;
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, game->player.x * 32, game->player.y * 32);
 }

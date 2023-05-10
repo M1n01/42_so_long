@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 12:50:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 13:25:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_game(t_game *game)
 
 void	check_game(t_game *game)
 {
-	;
+	redraw_player(game);
 }
 
 int	deal_key(int keycode, t_game *game)
