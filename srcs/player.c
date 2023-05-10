@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:16:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 19:18:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	move(t_game *game, int dir)
 {
-	int	tmp_x;
-	int	tmp_y;
+	int		tmp_x;
+	int		tmp_y;
+	char	*map;
 
+	map = game->map_info.map;
 	tmp_x = game->player.x;
 	tmp_y = game->player.y;
 	if (dir == UP)
@@ -27,15 +29,15 @@ void	move(t_game *game, int dir)
 		tmp_x -= 1;
 	if (dir == RIGHT)
 		tmp_x += 1;
-	// if (game->map[tmp_y * count_map_width(game->map) + tmp_x] != '1')
-	// {
+	if (map[tmp_y * game->map_info.width + tmp_x] != '1')
+	{
 		game->player.pre_x = game->player.x;
 		game->player.pre_y = game->player.y;
 		game->player.x = tmp_x;
 		game->player.y = tmp_y;
 		game->turn++;
 		printf("turn: %ld\n", game->turn);
-	// }
+	}
 }
 
 void	redraw_player(t_game *game)
