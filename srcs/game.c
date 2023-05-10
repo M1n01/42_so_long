@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 13:40:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 13:41:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	free_game(t_game *game)
 {
 	mlx_destroy_window(game->ptr, game->win_ptr);
 	destroy_objs(game);
-	// ft_free(game->map);
-	// ft_free(game->ptr);
-	// ft_free(game->win_ptr);
+	ft_free(game->map);
 	ft_free(game);
 	exit(0);
 }
