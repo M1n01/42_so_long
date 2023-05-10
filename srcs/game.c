@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 13:41:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:16:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	deal_key(int keycode, t_game *game)
 		move(game, DOWN);
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move(game, RIGHT);
-	if (game->redraw == 1)
-	{
+	// if (game->redraw == 1)
+	// {
 		check_game(game);
-		game->redraw = 0;
-	}
+		// game->redraw = 0;
+	// }
 	return (0);
 }
 

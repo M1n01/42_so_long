@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:14:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:15:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	move(t_game *game, int dir)
 		game->player.pre_y = game->player.y;
 		game->player.x = tmp_x;
 		game->player.y = tmp_y;
-		game->redraw = 1;
+		// game->redraw = 1;
 		game->turn++;
 		printf("turn: %ld\n", game->turn);
 	}
@@ -47,5 +47,5 @@ void	redraw_player(t_game *game)
 	// player = game->player;
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, game->player.x * 32, game->player.y * 32);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.floor, game->player.pre_x * 32, game->player.pre_y * 32);
-	game->redraw = 0;
+	// game->redraw = 0;
 }
