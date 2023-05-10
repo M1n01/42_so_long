@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 13:37:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 13:37:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	move(t_game *game, int dir)
 		game->player.y = tmp_y;
 		game->redraw = 1;
 		game->turn++;
-		printf("turn: %d\n", game->turn);
+		printf("turn: %ld\n", game->turn);
 	}
 	printf("x: %d, y: %d\n", game->player.x, game->player.y);
 }
