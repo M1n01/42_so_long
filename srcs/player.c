@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 13:37:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 13:48:04 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	redraw_player(t_game *game)
 	// t_player	player;
 
 	// player = game->player;
+	mlx_destroy_image(game->ptr, game->objs.player);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, game->player.x * 32, game->player.y * 32);
 }
