@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/09 21:39:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 12:50:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	free_game(t_game *game)
 	exit(0);
 }
 
+void	check_game(t_game *game)
+{
+	;
+}
+
 int	deal_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_Q || keycode == KEY_ESC)
@@ -31,20 +36,17 @@ int	deal_key(int keycode, t_game *game)
 		free_game(game);
 	}
 	if (keycode == KEY_W || keycode == KEY_UP)
-	{
 		move(game, UP);
-	}
 	if (keycode == KEY_A || keycode == KEY_LEFT)
-	{
 		move(game, LEFT);
-	}
 	if (keycode == KEY_S || keycode == KEY_DOWN)
-	{
 		move(game, DOWN);
-	}
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
-	{
 		move(game, RIGHT);
+	if (game->redraw == 1)
+	{
+		check_game(game);
+		game->redraw = 0;
 	}
 	return (0);
 }
@@ -95,6 +97,8 @@ t_game	*init_game(char *map)
 	game->height = 480;
 	game->map = map;
 	game->objs = init_objs(game);
+	game->redraw = false;
+	game->turn = 0;
 	return (game);
 }
 
@@ -107,6 +111,7 @@ void	newgame(char *map)
 	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
 	put_objs(map, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
+	mlx_hook(game->win_ptr, 33, 1L << 17, free_game, game);
 	mlx_loop(game->ptr);
 	destroy_objs(game);
 	ft_free(game);
