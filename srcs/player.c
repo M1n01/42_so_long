@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:15:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 15:23:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,25 @@ void	move(t_game *game, int dir)
 	tmp_x = game->player.x;
 	tmp_y = game->player.y;
 	if (dir == UP)
+	{
 		tmp_y -= 1;
+		puts("up");
+	}
 	if (dir == DOWN)
+	{
 		tmp_y += 1;
+		puts("down");
+	}
 	if (dir == LEFT)
+	{
 		tmp_x -= 1;
+		puts("left");
+	}
 	if (dir == RIGHT)
+	{
 		tmp_x += 1;
+		puts("right");
+	}
 	if (game->map[tmp_y * count_map_width(game->map) + tmp_x] != '1')
 	{
 		game->player.pre_x = game->player.x;
