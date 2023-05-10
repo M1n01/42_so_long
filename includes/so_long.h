@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/09 22:20:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 10:49:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	win_close(int keycode, t_game *mlx);
 
 t_objs	init_objs(t_game *game);
 void	destroy_objs(t_game *game);
+
+void	move(t_game *game, int dir);
 
 void	newgame(char *map);
 
