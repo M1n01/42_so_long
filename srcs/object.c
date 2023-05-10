@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 13:40:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:11:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_objs	init_objs(t_game *game)
 		"./img/sprites/Other/Pacdots/pacdot_powerup.xpm", &size, &size);
 	objs.exit = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Other/Portal/portal.xpm", &size, &size);
+	objs.floor = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Pac-Man/black.xpm", &size, &size);
 	return (objs);
 }
 
