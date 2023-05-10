@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:26:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 19:10:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	destroy_objs(t_game *game)
 	mlx_destroy_image(game->ptr, game->objs.floor);
 }
 
-void	put_obj(t_game *game, int x, int y, char c)
+void	put_obj(t_game *game, char c, int x, int y)
 {
 	if (c == '1')
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
