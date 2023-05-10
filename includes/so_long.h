@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:13:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:32:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ size_t	count_map_width(char *map);
 size_t	count_map_height(char *map);
 bool	check_map(char *map);
 char	*get_map(char *file);
-
-int	win_close(int keycode, t_game *mlx);
 
 t_objs	init_objs(t_game *game);
 void	destroy_objs(t_game *game);
