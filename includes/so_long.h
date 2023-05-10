@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:27:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 19:08:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_game
 	void		*win_ptr;
 	int			width;
 	int			height;
-	t_map		*map_info;
+	t_map		map_info;
 	t_objs		objs;
 	t_player	player;
 	size_t		turn;

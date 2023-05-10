@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:33:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 19:08:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	end_game(t_game *game)
 	ft_printf("Exit game\n");
 	mlx_destroy_window(game->ptr, game->win_ptr);
 	destroy_objs(game);
-	ft_free(game->map_info->map);
+	ft_free(game->map_info.map);
 	ft_free(game);
 	exit(0);
 	return (0);
@@ -47,9 +47,9 @@ void	make_start_window(t_game *game)
 	size_t	height;
 	char	*map;
 
-	map = game->map_info->map;
-	width = game->map_info->width;
-	height = game->map_info->height;
+	map = game->map_info.map;
+	width = game->map_info.width;
+	height = game->map_info.height;
 	i = 0;
 	while (i < height)
 	{
@@ -76,9 +76,9 @@ t_game	*init_game(char *mp)
 	game->win_ptr = NULL;
 	game->width = 640;
 	game->height = 480;
-	game->map_info->map = mp;
-	game->map_info->width = count_map_width(mp) + 1;
-	game->map_info->height = count_map_height(mp);
+	game->map_info.map = mp;
+	game->map_info.width = count_map_width(mp) + 1;
+	game->map_info.height = count_map_height(mp);
 	game->objs = init_objs(game);
 	game->turn = 0;
 	return (game);
