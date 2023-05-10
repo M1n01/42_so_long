@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:31:58 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:32:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	make_start_window(t_game *game)
 	}
 }
 
-t_game	*init_game(char *map)
+t_game	*init_game(char *mp)
 {
 	t_game	*game;
 
@@ -76,9 +76,9 @@ t_game	*init_game(char *map)
 	game->win_ptr = NULL;
 	game->width = 640;
 	game->height = 480;
-	game->map_info->width = count_map_width(map) + 1;
-	game->map_info->height = count_map_height(map);
-	game->map_info->map = map;
+	game->map_info->width = count_map_width(mp) + 1;
+	game->map_info->height = count_map_height(mp);
+	game->map_info->map = mp;
 	puts("map");
 	game->objs = init_objs(game);
 	game->turn = 0;
