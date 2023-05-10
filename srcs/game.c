@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 17:31:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 17:31:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_game	*init_game(char *map)
 	game->map_info->width = count_map_width(map) + 1;
 	game->map_info->height = count_map_height(map);
 	game->map_info->map = map;
+	puts("map");
 	game->objs = init_objs(game);
 	game->turn = 0;
 	return (game);
