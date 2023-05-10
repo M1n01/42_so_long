@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:11:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 14:30:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	destroy_objs(t_game *game)
 	mlx_destroy_image(game->ptr, game->objs.wall);
 	mlx_destroy_image(game->ptr, game->objs.collectible);
 	mlx_destroy_image(game->ptr, game->objs.exit);
+	mlx_destroy_image(game->ptr, game->objs.floor);
 }
