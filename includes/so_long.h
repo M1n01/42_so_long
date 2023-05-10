@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:32:41 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 15:18:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	destroy_objs(t_game *game);
 void	move(t_game *game, int dir);
 void	redraw_player(t_game *game);
 
-void	newgame(char *map);
+void	start_game(char *map);
 
 #endif

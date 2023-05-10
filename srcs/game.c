@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 14:33:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 15:19:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,12 @@ t_game	*init_game(char *map)
 	return (game);
 }
 
-void	newgame(char *map)
+void	start_game(char *map)
 {
 	t_game	*game;
 
-	(void)map;
 	game = init_game(map);
-	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "Game");
+	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "so_long");
 	put_objs(map, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
 	// mlx_hook(game->win_ptr, 33, 1L << 17, free_game, game);
