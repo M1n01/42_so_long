@@ -6,19 +6,21 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 15:19:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 16:13:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
 
-void	free_game(t_game *game)
+int	end_game(t_game *game)
 {
+	ft_printf("Exit game\n");
 	mlx_destroy_window(game->ptr, game->win_ptr);
 	destroy_objs(game);
 	ft_free(game->map);
 	ft_free(game);
 	exit(0);
+	return (0);
 }
 
 void	check_game(t_game *game)
@@ -29,10 +31,7 @@ void	check_game(t_game *game)
 int	deal_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_Q || keycode == KEY_ESC)
-	{
-		ft_printf("Exit game\n");
-		free_game(game);
-	}
+		end_game(game);
 	if (keycode == KEY_W || keycode == KEY_UP)
 		move(game, UP);
 	if (keycode == KEY_A || keycode == KEY_LEFT)
@@ -41,12 +40,7 @@ int	deal_key(int keycode, t_game *game)
 		move(game, DOWN);
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move(game, RIGHT);
-	// if (game->redraw == 1)
-	// {
 	check_game(game);
-	printf("keycode: %d\n", keycode);
-		// game->redraw = 0;
-	// }
 	return (0);
 }
 
@@ -96,7 +90,6 @@ t_game	*init_game(char *map)
 	game->height = 480;
 	game->map = map;
 	game->objs = init_objs(game);
-	// game->redraw = false;
 	game->turn = 0;
 	return (game);
 }
@@ -109,7 +102,7 @@ void	start_game(char *map)
 	game->win_ptr = mlx_new_window(game->ptr, game->width, game->height, "so_long");
 	put_objs(map, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
-	// mlx_hook(game->win_ptr, 33, 1L << 17, free_game, game);
+	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
 	mlx_loop(game->ptr);
 	destroy_objs(game);
 	ft_free(game);

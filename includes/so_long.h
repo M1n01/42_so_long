@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 15:18:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/10 16:09:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_game
 	char	*map;
 	t_objs	objs;
 	t_player	player;
-	bool	redraw;
 	size_t	turn;
 }	t_game;
 
