@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 19:08:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:31:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	start_game(char *map)
 		game->width, game->height, "so_long");
 	if (game->win_ptr == NULL)
 		ft_error("Mlx window init failed");
-	make_start_window(game);
+	mlx_loop_hook(game->ptr, make_start_window, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
 	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
 	mlx_loop(game->ptr);
