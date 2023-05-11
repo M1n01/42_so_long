@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 12:44:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 14:46:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ t_objs	init_objs(t_game *game)
 	int		size;
 
 	size = SIZE;
-	objs.player = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
-	if (objs.player == NULL)
-		printf("error\n");
 	objs.wall = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Other/Walls/wall.xpm", &size, &size);
 	if (objs.wall == NULL)
@@ -43,7 +39,6 @@ t_objs	init_objs(t_game *game)
 
 void	destroy_objs(t_game *game)
 {
-	mlx_destroy_image(game->ptr, game->objs.player);
 	mlx_destroy_image(game->ptr, game->objs.wall);
 	mlx_destroy_image(game->ptr, game->objs.collectible);
 	mlx_destroy_image(game->ptr, game->objs.exit);
@@ -69,5 +64,5 @@ void	put_obj(t_game *game, char c, int x, int y)
 		game->player.x = x;
 		game->player.y = y;
 	}
-	redraw_player(game);
+	check_game(game);
 }

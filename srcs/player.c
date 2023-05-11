@@ -6,13 +6,48 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 13:04:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 14:47:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
 
-void	move(t_game *game, int dir)
+t_player	init_plr(t_game *game)
+{
+	int			size;
+	t_player	plr;
+
+	size = SIZE;
+	plr.player_down = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+	if (plr.player_down == NULL)
+		printf("error\n");
+	plr.player_up = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+	if (plr.player_up == NULL)
+		printf("error\n");
+	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+	if (plr.player_left == NULL)
+		printf("error\n");
+	plr.player_right = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+	if (plr.player_right == NULL)
+		printf("error\n");
+	plr.x = -1;
+	plr.y = -1;
+	return (plr);
+}
+
+void	destroy_plr(t_game *game)
+{
+	mlx_destroy_image(game->ptr, game->player.player_down);
+	mlx_destroy_image(game->ptr, game->player.player_up);
+	mlx_destroy_image(game->ptr, game->player.player_left);
+	mlx_destroy_image(game->ptr, game->player.player_right);
+}
+
+void	plr_move(t_game *game, int dir)
 {
 	int		tmp_x;
 	int		tmp_y;
@@ -40,7 +75,7 @@ void	move(t_game *game, int dir)
 	}
 }
 
-int	redraw_player(t_game *game)
+int	check_game(t_game *game)
 {
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
 		game->objs.player, game->player.x * 32, game->player.y * 32);

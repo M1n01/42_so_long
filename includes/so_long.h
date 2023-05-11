@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 13:05:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 14:47:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_map
 typedef struct s_objs
 {
 	void	*wall;
-	void	*player;
 	void	*exit;
 	void	*collectible;
 	void	*floor;
@@ -60,10 +59,14 @@ typedef struct s_objs
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int pre_x;
-	int pre_y;
+	void	*player_down;
+	void	*player_up;
+	void	*player_left;
+	void	*player_right;
+	int		x;
+	int		y;
+	int 	pre_x;
+	int 	pre_y;
 }	t_player;
 
 typedef struct s_game
@@ -88,10 +91,15 @@ t_objs	init_objs(t_game *game);
 void	destroy_objs(t_game *game);
 void	put_obj(t_game *game, char c, int x, int y);
 
-void	move(t_game *game, int dir);
-int		redraw_player(t_game *game);
+t_player	init_plr(t_game *game);
+void	destroy_plr(t_game *game);
+void	plr_move(t_game *game, int dir);
+int		check_game(t_game *game);
 
 void	start_game(char *map);
 int		end_game(t_game *game);
+
+int		deal_key(int keycode, t_game *game);
+int		make_start_window(t_game *game);
 
 #endif
