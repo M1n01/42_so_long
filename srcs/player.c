@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:47:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 14:49:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	plr_move(t_game *game, int dir)
 int	check_game(t_game *game)
 {
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
-		game->objs.player, game->player.x * 32, game->player.y * 32);
+		game->player.player_down, game->player.x * 32, game->player.y * 32);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
 		game->objs.floor, game->player.pre_x * 32, game->player.pre_y * 32);
 	if (game->map_info.map[game->player.y * game->map_info.width + \
