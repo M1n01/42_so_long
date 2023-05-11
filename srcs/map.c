@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 10:44:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 16:08:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ size_t	count_map_height(char *map)
 
 	i = 0;
 	height = 1;
-	while (map[i] != '\0')
+	while (map[i + 1] != '\0')
 	{
-		if (map[i] == '\n')
+		if (map[i] == '\n' && map[i + 1] != '\0')
 			height++;
 		i++;
 	}

@@ -2,7 +2,6 @@ NAME = so_long
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
-# CFLAGS += -lmlx -lXext -lX11
 
 INCDIR = ./includes
 INC = $(shell find $(INCDIR) -name "*.h" -type f | xargs)
@@ -19,11 +18,11 @@ MLX = $(MLXDIR)/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
+# $(NAME): $(OBJS) $(LIBFT) $(MLX)
+# 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
-# $(NAME): $(OBJS) $(LIBFT)
-# 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 
 $(LIBFT):
@@ -34,7 +33,7 @@ $(MLX):
 
 clean:
 		$(MAKE) fclean -C $(LIBDIR)
-		$(MAKE) clean -C $(MLXDIR)
+#		$(MAKE) clean -C $(MLXDIR)
 		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
