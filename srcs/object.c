@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 12:41:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 12:44:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	put_obj(t_game *game, char c, int x, int y)
 		game->player.x = x;
 		game->player.y = y;
 	}
+	redraw_player(game);
 }
