@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 15:03:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:06:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ t_player	init_plr(t_game *game)
 
 	size = SIZE;
 	plr.player_down = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+		"./img/sprites/Pac-Man/pac_open_down.xpm", &size, &size);
 	if (plr.player_down == NULL)
 		printf("error\n");
 	plr.player_up = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+		"./img/sprites/Pac-Man/pac_open_up.xpm", &size, &size);
 	if (plr.player_up == NULL)
 		printf("error\n");
 	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+		"./img/sprites/Pac-Man/pac_open_left.xpm", &size, &size);
 	if (plr.player_left == NULL)
 		printf("error\n");
 	plr.player_right = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_closed.xpm", &size, &size);
+		"./img/sprites/Pac-Man/pac_open_right.xpm", &size, &size);
 	if (plr.player_right == NULL)
 		printf("error\n");
 	plr.x = -1;
@@ -77,7 +77,7 @@ void	plr_move(t_game *game, int dir)
 	}
 }
 
-int	check_game(t_game *game)
+void	put_plr(t_game *game)
 {
 	if (game->player.dir == UP)
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
@@ -93,6 +93,11 @@ int	check_game(t_game *game)
 			game->player.player_right, game->player.x * 32, game->player.y * 32);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
 		game->objs.floor, game->player.pre_x * 32, game->player.pre_y * 32);
+}
+
+int	check_game(t_game *game)
+{
+	put_plr(game);
 	if (game->map_info.map[game->player.y * game->map_info.width + \
 		game->player.x] == 'C')
 	{
