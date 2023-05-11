@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 11:07:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:15:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	check_objs(char *map);
 static bool	check_wall(char *map);
-bool	check_player_getting_object(char *map);
+// bool	check_player_getting_object(char *map);
 
 bool	check_map(char *map)
 {
