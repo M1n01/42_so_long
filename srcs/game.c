@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 11:31:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:32:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	deal_key(int keycode, t_game *game)
 	return (0);
 }
 
-void	make_start_window(t_game *game)
+int	make_start_window(t_game *game)
 {
 	size_t	i;
 	size_t	j;
@@ -61,6 +61,7 @@ void	make_start_window(t_game *game)
 		}
 		i++;
 	}
+	return (0);
 }
 
 t_game	*init_game(char *mp)
