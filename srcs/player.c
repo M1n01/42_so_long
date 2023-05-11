@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 11:38:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 12:58:21 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,11 @@ int	redraw_player(t_game *game)
 		game->objs.player, game->player.x * 32, game->player.y * 32);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
 		game->objs.floor, game->player.pre_x * 32, game->player.pre_y * 32);
+	if (game->map_info.map[game->player.y * game->map_info.width + \
+		game->player.x] == 'C')
+	{
+		game->map_info.map[game->player.y * game->map_info.width + \
+			game->player.x] = '0';
+	}
 	return (0);
 }
