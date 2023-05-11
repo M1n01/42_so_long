@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:47:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 14:50:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static t_game	*init_game(char *mp);
 
 void	start_game(char *map)
 {
@@ -28,7 +30,7 @@ void	start_game(char *map)
 	return ;
 }
 
-t_game	*init_game(char *mp)
+static t_game	*init_game(char *mp)
 {
 	t_game	*game;
 
