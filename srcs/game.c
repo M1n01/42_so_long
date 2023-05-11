@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 12:39:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 13:04:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	end_game(t_game *game)
 {
-	ft_printf("Exit game\n");
+	if (game->clear == false)
+		ft_printf("Exit game\n");
+	else
+		ft_printf("Congrats, clear game!!\n");
 	mlx_destroy_window(game->ptr, game->win_ptr);
 	destroy_objs(game);
 	ft_free(game->map_info.map);
@@ -84,6 +87,7 @@ t_game	*init_game(char *mp)
 	game->player.x = -1;
 	game->player.y = -1;
 	game->turn = 0;
+	game->clear = false;
 	return (game);
 }
 
