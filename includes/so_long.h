@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:47:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:01:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_player
 	void	*player_up;
 	void	*player_left;
 	void	*player_right;
+	int		dir;
 	int		x;
 	int		y;
 	int 	pre_x;

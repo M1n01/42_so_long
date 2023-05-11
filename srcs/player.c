@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:49:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:03:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_player	init_plr(t_game *game)
 		printf("error\n");
 	plr.x = -1;
 	plr.y = -1;
+	plr.dir = -1;
 	return (plr);
 }
 
@@ -66,6 +67,7 @@ void	plr_move(t_game *game, int dir)
 		tmp_x += 1;
 	if (map[tmp_y * game->map_info.width + tmp_x] != '1')
 	{
+		game->player.dir = dir;
 		game->player.pre_x = game->player.x;
 		game->player.pre_y = game->player.y;
 		game->player.x = tmp_x;
@@ -77,8 +79,18 @@ void	plr_move(t_game *game, int dir)
 
 int	check_game(t_game *game)
 {
-	mlx_put_image_to_window(game->ptr, game->win_ptr, \
-		game->player.player_down, game->player.x * 32, game->player.y * 32);
+	if (game->player.dir == UP)
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->player.player_up, game->player.x * 32, game->player.y * 32);
+	if (game->player.dir == DOWN || game->player.dir == -1)
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->player.player_down, game->player.x * 32, game->player.y * 32);
+	if (game->player.dir == LEFT)
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->player.player_left, game->player.x * 32, game->player.y * 32);
+	if (game->player.dir == RIGHT)
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->player.player_right, game->player.x * 32, game->player.y * 32);
 	mlx_put_image_to_window(game->ptr, game->win_ptr, \
 		game->objs.floor, game->player.pre_x * 32, game->player.pre_y * 32);
 	if (game->map_info.map[game->player.y * game->map_info.width + \
