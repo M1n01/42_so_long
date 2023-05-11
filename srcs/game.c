@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 11:39:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 12:39:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ t_game	*init_game(char *mp)
 	game->map_info.width = count_map_width(mp) + 1;
 	game->map_info.height = count_map_height(mp);
 	game->objs = init_objs(game);
+	game->player.x = -1;
+	game->player.y = -1;
 	game->turn = 0;
 	return (game);
 }
@@ -95,7 +97,6 @@ void	start_game(char *map)
 	if (game->win_ptr == NULL)
 		ft_error("Mlx window init failed");
 	mlx_loop_hook(game->ptr, make_start_window, game);
-	// mlx_loop_hook(game->ptr, redraw_player, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
 	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
 	mlx_loop(game->ptr);
