@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 11:36:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:37:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	put_obj(t_game *game, char c, int x, int y)
 			game->objs.floor, x * SIZE, y * SIZE);
 	if (c == 'P')
 	{
-		// mlx_put_image_to_window(game->ptr, game->win_ptr, \
-			game->objs.player, x * SIZE, y * SIZE);
+		// mlx_put_image_to_window(game->ptr, game->win_ptr, game->objs.player, x * SIZE, y * SIZE);
 		game->player.x = x;
 		game->player.y = y;
 	}
