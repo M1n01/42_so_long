@@ -11,10 +11,6 @@ SRCDIR = ./srcs
 SRCS = $(shell find $(SRCDIR) -name "*.c" -type f | xargs)
 OBJS = $(SRCS:%.c=%.o)
 
-# UTILDIR = ./utils
-# UTILS = $(shell find $(UTILDIR) -name "*.c" -type f | xargs)
-# UTILS_OBJ = $(UTILS:%.c=%.o)
-
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
@@ -25,6 +21,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
+
+# $(NAME): $(OBJS) $(LIBFT)
+# 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)

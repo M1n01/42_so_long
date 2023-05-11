@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/10 19:11:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 11:10:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+
+# define SIZE 32
 
 enum e_direction
 {
@@ -73,7 +75,7 @@ typedef struct s_game
 	t_map		map_info;
 	t_objs		objs;
 	t_player	player;
-	size_t		turn;
+	int			turn;
 }	t_game;
 
 size_t	count_map_width(char *map);
