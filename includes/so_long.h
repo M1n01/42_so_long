@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 13:03:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/11 13:05:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void	move(t_game *game, int dir);
 int		redraw_player(t_game *game);
 
 void	start_game(char *map);
+int		end_game(t_game *game);
 
 #endif
