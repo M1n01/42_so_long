@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/14 23:26:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/14 23:28:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ bool	isValidMove(t_map *map, size_t x, size_t y, char c)
 	{
 		if (map->map[y * map->width + x] != '1')
 		{
-			if (c != 'E' && map->map[y * map->width + x] != 'E')
-				return (true);
-			else if (c == 'E')
+			if (c != 'E' && map->map[y * map->width + x] == 'E')
+				return (false);
+			else
 				return (true);
 		}
 	}
