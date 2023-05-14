@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/15 00:29:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/15 01:07:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-bool	isValidMove(t_map *map, size_t x, size_t y, char c)
+static bool	is_valid_move(t_map *map, size_t x, size_t y, char c)
 {
 	if (x >= 0 && x < map->width && y >= 0 && y < map->height)
 	{
@@ -27,81 +27,79 @@ bool	isValidMove(t_map *map, size_t x, size_t y, char c)
 	return (false);
 }
 
-void	solveMaze(t_map *map, size_t x, size_t y, bool *flag, char c)
+static void	cal_position(t_vector *pos, t_vector *npos, int cmd)
 {
-	int	cmd;
-	size_t	ni;
-	size_t	nj;
-
-	if (!isValidMove(map, x, y, c))
-		return ;
-	if (map->map[y * map->width + x] == 'P')
+	if (cmd == UP || cmd == DOWN)
 	{
-		*flag = 1;
+		npos->x = pos->x;
+		if (cmd == UP)
+			npos->y = pos->y - 1;
+		if (cmd == DOWN)
+			npos->y = pos->y + 1;
+	}
+	else if (cmd == LEFT || cmd == RIGHT)
+	{
+		if (cmd == LEFT)
+			npos->x = pos->x - 1;
+		if (cmd == RIGHT)
+			npos->x = pos->x + 1;
+		npos->y = pos->y;
+	}
+}
+
+static void	check_obj(t_map *map, t_vector pos, bool *reach, char c)
+{
+	int			cmd;
+	t_vector	cp;
+
+	if (!is_valid_move(map, pos.x, pos.y, c))
+		return ;
+	if (map->map[pos.y * map->width + pos.x] == 'P')
+	{
+		*reach = true;
 		return ;
 	}
-	c = map->map[y * map->width + x];
-	map->map[y * map->width + x] = 'x';
+	c = map->map[pos.y * map->width + pos.x];
+	map->map[pos.y * map->width + pos.x] = 'x';
 	cmd = -1;
 	while (++cmd < 4)
 	{
-		if (cmd == UP || cmd == DOWN)
+		cal_position(&pos, &cp, cmd);
+		if (0 <= cp.x && cp.x < map->width && 0 <= cp.y && cp.y < map->height)
 		{
-			ni = x;
-			if (cmd == UP)
-				nj = y - 1;
-			if (cmd == DOWN)
-				nj = y + 1;
-		}
-		else if (cmd == LEFT || cmd == RIGHT)
-		{
-			if (cmd == LEFT)
-				ni = x - 1;
-			if (cmd == RIGHT)
-				ni = x + 1;
-			nj = y;
-		}
-		if (0 <= ni && ni < map->width && 0 <= nj && nj < map->height)
-		{
-			if (map->map[nj * map->width + ni] != '1')
-			{
-				if (map->map[nj * map->width + ni] != 'x')
-					solveMaze(map, ni, nj, flag, c);
-			}
+			if (map->map[cp.y * map->width + cp.x] != '1' && \
+				map->map[cp.y * map->width + cp.x] != 'x')
+					check_obj(map, cp, reach, c);
 		}
 	}
-	map->map[y * map->width + x] = c;
+	map->map[pos.y * map->width + pos.x] = c;
 	return ;
 }
 
-bool solveItem(t_map *map)
+bool	check_reach_objs(t_map *mp)
 {
-	size_t	i, j;
-	bool	flag;
+	t_vector	pos;
+	bool		flag;
+	char		*map;
 
-	i = 0;
-	while (i < map->height)
+	map = mp->map;
+	pos.y = 0;
+	while (pos.y < mp->height)
 	{
-		j = 0;
-		while (j < map->width && map->map[i * map->width + j] != '\0')
+		pos.x = 0;
+		while (pos.x < mp->width && map[pos.y * mp->width + pos.x] != '\0')
 		{
-			if (map->map[i * map->width + j] == 'C' || map->map[i * map->width + j] == 'E')
+			if (map[pos.y * mp->width + pos.x] == 'C' || \
+				map[pos.y * mp->width + pos.x] == 'E')
 			{
 				flag = false;
-				printf("%c\n", map->map[i * map->width + j]);
-				printf("x: %zu, y: %zu\n", j, i);
-				solveMaze(map, j, i, &flag, map->map[i * map->width + j]);
+				check_obj(mp, pos, &flag, map[pos.y * mp->width + pos.x]);
 				if (flag == false)
-				{
-					puts("NG");
 					return (false);
-				}
-				else
-					puts("OK");
 			}
-			j++;
+			pos.x++;
 		}
-		i++;
+		pos.y++;
 	}
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/14 20:40:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/15 01:03:00 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct s_map
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	size_t	x;
+	size_t	y;
 }	t_vector;
 
 typedef struct s_objs
@@ -110,7 +110,6 @@ int		end_game(t_game *game);
 int		deal_key(int keycode, t_game *game);
 int		make_start_window(t_game *game);
 
-bool solveItem(t_map *map);
-// bool solveItem(t_map *map);
+bool 	check_reach_objs(t_map *mp);
 
 #endif
