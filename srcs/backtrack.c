@@ -6,36 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/14 23:28:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/15 00:29:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	find_plr(t_map *map, size_t *x, size_t *y)
-{
-	size_t	i;
-	size_t	j;
-
-	*x = 0;
-	*y = 0;
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width && map->map[i * map->width + j] != '\0')
-		{
-			if (map->map[i * map->width + j] == 'P')
-			{
-				*x = j;
-				*y = i;
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 bool	isValidMove(t_map *map, size_t x, size_t y, char c)
 {
@@ -54,65 +29,45 @@ bool	isValidMove(t_map *map, size_t x, size_t y, char c)
 
 void	solveMaze(t_map *map, size_t x, size_t y, bool *flag, char c)
 {
-	size_t ni, nj;
+	int	cmd;
+	size_t	ni;
+	size_t	nj;
 
 	if (!isValidMove(map, x, y, c))
 		return ;
 	if (map->map[y * map->width + x] == 'P')
 	{
-		// puts("Goal");
-		// printf("x: %zu, y: %zu\n", x, y);
 		*flag = 1;
 		return ;
 	}
 	c = map->map[y * map->width + x];
-	map->map[y * map->width + x] = 0;
-
-	// 上に進む
-	ni = x;
-	nj = y - 1;
-	if (nj >= 0)
+	map->map[y * map->width + x] = 'x';
+	cmd = -1;
+	while (++cmd < 4)
 	{
-		if (map->map[nj * map->width + ni] != '1')
+		if (cmd == UP || cmd == DOWN)
 		{
-			if (map->map[nj * map->width + ni] != 0)
-				solveMaze(map, ni, nj, flag, c);
+			ni = x;
+			if (cmd == UP)
+				nj = y - 1;
+			if (cmd == DOWN)
+				nj = y + 1;
 		}
-	}
-
-	// 下に進む
-	ni = x;
-	nj = y + 1;
-	if (nj < map->height)
-	{
-		if (map->map[nj * map->width + ni] != '1')
+		else if (cmd == LEFT || cmd == RIGHT)
 		{
-			if (map->map[nj * map->width + ni] != 0)
-				solveMaze(map, ni, nj, flag, c);
+			if (cmd == LEFT)
+				ni = x - 1;
+			if (cmd == RIGHT)
+				ni = x + 1;
+			nj = y;
 		}
-	}
-
-	// 左に進む
-	ni = x - 1;
-	nj = y;
-	if (ni >= 0)
-	{
-		if (map->map[nj * map->width + ni] != '1')
+		if (0 <= ni && ni < map->width && 0 <= nj && nj < map->height)
 		{
-			if (map->map[nj * map->width + ni] != 0)
-				solveMaze(map, ni, nj, flag, c);
-		}
-	}
-
-	// 右に進む
-	ni = x + 1;
-	nj = y;
-	if (ni < map->width)
-	{
-		if (map->map[nj * map->width + ni] != '1')
-		{
-			if (map->map[nj * map->width + ni] != 0)
-				solveMaze(map, ni, nj, flag, c);
+			if (map->map[nj * map->width + ni] != '1')
+			{
+				if (map->map[nj * map->width + ni] != 'x')
+					solveMaze(map, ni, nj, flag, c);
+			}
 		}
 	}
 	map->map[y * map->width + x] = c;
