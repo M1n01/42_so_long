@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 16:08:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/12 13:37:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_map(char *file)
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 			ft_error("Failed to read file");
-		tmp = ft_strjoin(map, buf);
+		tmp = ft_strjoin(map, buf); // 失敗したときbufがfreeされていない
 		ft_free(map);
 		map = tmp;
 	}
@@ -64,7 +64,7 @@ size_t	count_map_width(char *map)
 			ft_error("Invalid width map");
 		i += j;
 	}
-	return (width);
+	return (width + 1);
 }
 
 size_t	count_map_height(char *map)

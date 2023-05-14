@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 15:59:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/05/14 20:40:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ typedef struct s_map
 	size_t	height;
 }	t_map;
 
+typedef struct s_vector
+{
+	int	x;
+	int	y;
+}	t_vector;
+
 typedef struct s_objs
 {
 	void	*wall;
@@ -86,7 +92,7 @@ typedef struct s_game
 
 size_t	count_map_width(char *map);
 size_t	count_map_height(char *map);
-bool	check_map(char *map);
+bool	check_map(t_map *map);
 char	*get_map(char *file);
 
 t_objs	init_objs(t_game *game);
@@ -103,5 +109,8 @@ int		end_game(t_game *game);
 
 int		deal_key(int keycode, t_game *game);
 int		make_start_window(t_game *game);
+
+bool solveItem(t_map *map);
+// bool solveItem(t_map *map);
 
 #endif
