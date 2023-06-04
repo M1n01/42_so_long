@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backtrack.c                                        :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/15 01:07:03 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/04 21:37:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,11 @@ static void	check_obj(t_map *map, t_vector pos, bool *reach, char c)
 		*reach = true;
 		return ;
 	}
+	if (*reach == true)
+		return ;
 	c = map->map[pos.y * map->width + pos.x];
 	map->map[pos.y * map->width + pos.x] = 'x';
+	// printf("map\n%s\n", map->map);
 	cmd = -1;
 	while (++cmd < 4)
 	{
