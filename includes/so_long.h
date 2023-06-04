@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/15 01:03:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/04 22:06:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_player
 	int		dir;
 	int		x;
 	int		y;
-	int 	pre_x;
-	int 	pre_y;
+	int		pre_x;
+	int		pre_y;
 }	t_player;
 
 typedef struct s_game
@@ -90,26 +90,26 @@ typedef struct s_game
 	bool		clear;
 }	t_game;
 
-size_t	count_map_width(char *map);
-size_t	count_map_height(char *map);
-bool	check_map(t_map *map);
-char	*get_map(char *file);
+size_t		count_map_width(char *map);
+size_t		count_map_height(char *map);
+bool		check_map(t_map *map);
+char		*get_map(char *file);
 
-t_objs	init_objs(t_game *game);
-void	destroy_objs(t_game *game);
-void	put_obj(t_game *game, char c, int x, int y);
+t_objs		init_objs(t_game *game);
+void		destroy_objs(t_game *game);
+void		put_obj(t_game *game, char c, int x, int y);
 
 t_player	init_plr(t_game *game);
-void	destroy_plr(t_game *game);
-void	plr_move(t_game *game, int dir);
-int		check_game(t_game *game);
+void		destroy_plr(t_game *game);
+void		plr_move(t_game *game, int dir);
+int			check_game(t_game *game);
 
-void	start_game(char *map);
-int		end_game(t_game *game);
+void		start_game(char *map);
+int			end_game(t_game *game);
 
-int		deal_key(int keycode, t_game *game);
-int		make_start_window(t_game *game);
+int			deal_key(int keycode, t_game *game);
+int			make_start_window(t_game *game);
 
-bool 	check_reach_objs(t_map *mp);
+bool		check_reach_objs(t_map *mp);
 
 #endif

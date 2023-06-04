@@ -5,104 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/04 21:37:42 by minabe           ###   ########.fr       */
+/*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
+/*   Updated: 2023/06/04 21:47:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static bool	is_valid_move(t_map *map, size_t x, size_t y, char c)
+static bool	check_objs(t_map *map);
+static bool	check_wall(t_map *map);
+
+bool	check_map(t_map *map)
 {
-	if (x >= 0 && x < map->width && y >= 0 && y < map->height)
+	if (map->height == map->width)
 	{
-		if (map->map[y * map->width + x] != '1')
+		ft_printf("not rectangle\n");
+		return (false);
+	}
+	if (!check_objs(map))
+	{
+		ft_printf("obj error\n");
+		return (false);
+	}
+	if (!check_wall(map))
+	{
+		ft_printf("wall error\n");
+		return (false);
+	}
+	if (!check_reach_objs(map))
+	{
+		ft_printf("not reach object\n");
+		return (false);
+	}
+	return (true);
+}
+
+static bool	check_objs(t_map *map)
+{
+	size_t	i;
+	size_t	start;
+	size_t	item;
+	size_t	goal;
+
+	i = 0;
+	start = 0;
+	item = 0;
+	goal = 0;
+	while (map->map[i] != '\0')
+	{
+		if (map->map[i] == 'P')
+			start++;
+		else if (map->map[i] == 'E')
+			goal++;
+		else if (map->map[i] == 'C')
+			item++;
+		else if (map->map[i] != '1' && map->map[i] != '0' \
+				&& map->map[i] != '\n')
+			return (false);
+		i++;
+	}
+	if (start != 1 || goal != 1 || item == 0)
+		return (false);
+	return (true);
+}
+
+static bool	check_wall(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (map->map[i] != '\0')
+	{
+		if (i < map->width || i > ft_strlen(map->map) - map->width)
 		{
-			if (c != 'E' && map->map[y * map->width + x] == 'E')
+			if (map->map[i] != '1' && map->map[i] != '\n')
 				return (false);
-			else
-				return (true);
 		}
-	}
-	return (false);
-}
-
-static void	cal_position(t_vector *pos, t_vector *npos, int cmd)
-{
-	if (cmd == UP || cmd == DOWN)
-	{
-		npos->x = pos->x;
-		if (cmd == UP)
-			npos->y = pos->y - 1;
-		if (cmd == DOWN)
-			npos->y = pos->y + 1;
-	}
-	else if (cmd == LEFT || cmd == RIGHT)
-	{
-		if (cmd == LEFT)
-			npos->x = pos->x - 1;
-		if (cmd == RIGHT)
-			npos->x = pos->x + 1;
-		npos->y = pos->y;
-	}
-}
-
-static void	check_obj(t_map *map, t_vector pos, bool *reach, char c)
-{
-	int			cmd;
-	t_vector	cp;
-
-	if (!is_valid_move(map, pos.x, pos.y, c))
-		return ;
-	if (map->map[pos.y * map->width + pos.x] == 'P')
-	{
-		*reach = true;
-		return ;
-	}
-	if (*reach == true)
-		return ;
-	c = map->map[pos.y * map->width + pos.x];
-	map->map[pos.y * map->width + pos.x] = 'x';
-	// printf("map\n%s\n", map->map);
-	cmd = -1;
-	while (++cmd < 4)
-	{
-		cal_position(&pos, &cp, cmd);
-		if (0 <= cp.x && cp.x < map->width && 0 <= cp.y && cp.y < map->height)
+		if (i % map->width == 0 || i % map->width == map->width - 2)
 		{
-			if (map->map[cp.y * map->width + cp.x] != '1' && \
-				map->map[cp.y * map->width + cp.x] != 'x')
-					check_obj(map, cp, reach, c);
+			if (map->map[i] != '1')
+				return (false);
 		}
-	}
-	map->map[pos.y * map->width + pos.x] = c;
-	return ;
-}
-
-bool	check_reach_objs(t_map *mp)
-{
-	t_vector	pos;
-	bool		flag;
-	char		*map;
-
-	map = mp->map;
-	pos.y = 0;
-	while (pos.y < mp->height)
-	{
-		pos.x = 0;
-		while (pos.x < mp->width && map[pos.y * mp->width + pos.x] != '\0')
-		{
-			if (map[pos.y * mp->width + pos.x] == 'C' || \
-				map[pos.y * mp->width + pos.x] == 'E')
-			{
-				flag = false;
-				check_obj(mp, pos, &flag, map[pos.y * mp->width + pos.x]);
-				if (flag == false)
-					return (false);
-			}
-			pos.x++;
-		}
-		pos.y++;
+		i++;
 	}
 	return (true);
 }
