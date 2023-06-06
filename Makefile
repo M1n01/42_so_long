@@ -18,12 +18,8 @@ MLX = $(MLXDIR)/libmlx.a
 
 all: $(NAME)
 
-# $(NAME): $(OBJS) $(LIBFT) $(MLX)
-# 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
-
-$(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
@@ -33,7 +29,7 @@ $(MLX):
 
 clean:
 		$(MAKE) fclean -C $(LIBDIR)
-#		$(MAKE) clean -C $(MLXDIR)
+		$(MAKE) clean -C $(MLXDIR)
 		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
