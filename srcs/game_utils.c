@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:15:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:37:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:11:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	make_start_window(t_game *game)
 	while (i < height)
 	{
 		j = 0;
-		while (j < width && map[i * width + j] != '\0')
+		while (j <= width && map[i * width + j] != '\0')
 		{
 			put_obj(game, map[i * width + j], j, i);
 			j++;
