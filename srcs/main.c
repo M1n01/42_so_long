@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:15:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:17:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	so_long(char *file)
 	// if (check_map(map) == false)
 	// 	ft_error("Invalid map");
 	printf("map:\n%s\n", map->map);
+	printf("width: %d\n", map->width);
 	start_game(map);
 	ft_free(map->map);
 	free(map);
