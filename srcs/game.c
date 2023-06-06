@@ -6,15 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:12:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:15:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static t_game	*init_game(char *mp);
+static t_game	*init_game(t_map *mp);
 
-void	start_game(char *map)
+void	start_game(t_map *map)
 {
 	t_game	*game;
 
@@ -30,7 +30,7 @@ void	start_game(char *map)
 	return ;
 }
 
-static t_game	*init_game(char *mp)
+static t_game	*init_game(t_map *mp)
 {
 	t_game	*game;
 
@@ -43,10 +43,10 @@ static t_game	*init_game(char *mp)
 	game->win_ptr = NULL;
 	game->width = 640;
 	game->height = 480;
-	game->map_info.map = mp;
+	game->map_info.map = mp->map;
 	// game->map_info.width = count_map_width(mp) + 1;
-	game->map_info.width = count_map_width(mp);
-	game->map_info.height = count_map_height(mp);
+	game->map_info.width = mp->width;
+	game->map_info.height = mp->height;
 	game->objs = init_objs(game);
 	game->player = init_plr(game);
 	game->turn = 0;
