@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_util.c                                   :+:      :+:    :+:   */
+/*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/04 22:15:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 19:28:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_valid_move(t_map *map, size_t x, size_t y, char c)
 {
-	if (x >= 0 && x < map->width && y >= 0 && y < map->height)
+	if (x < map->width && y < map->height)
 	{
 		if (map->map[y * map->width + x] != '1')
 		{
@@ -65,7 +65,7 @@ static void	check_obj(t_map *map, t_vector pos, bool *reach, char c)
 	while (++cmd < 4)
 	{
 		cal_position(&pos, &cp, cmd);
-		if (0 <= cp.x && cp.x < map->width && 0 <= cp.y && cp.y < map->height)
+		if (cp.x < map->width && cp.y < map->height)
 		{
 			if (map->map[cp.y * map->width + cp.x] != '1' && \
 				map->map[cp.y * map->width + cp.x] != 'x')
