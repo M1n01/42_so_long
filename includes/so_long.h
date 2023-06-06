@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:16:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:19:37 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 
-# define SIZE 32
+# define SIZE 10
 
 enum e_direction
 {
