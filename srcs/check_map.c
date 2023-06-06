@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/04 21:47:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:01:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ bool	check_map(t_map *map)
 		ft_printf("wall error\n");
 		return (false);
 	}
-	if (!check_reach_objs(map))
-	{
-		ft_printf("not reach object\n");
-		return (false);
-	}
+	// if (!check_reach_objs(map))
+	// {
+	// 	ft_printf("not reach object\n");
+	// 	return (false);
+	// }
 	return (true);
 }
 
