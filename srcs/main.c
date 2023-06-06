@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:18:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:21:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ void	so_long(char *file)
 	map->map = get_map(file);
 	map->width = count_map_width(map->map);
 	map->height = count_map_height(map->map);
-	// if (check_map(map) == false)
-	// 	ft_error("Invalid map");
-	printf("map:\n%s\n", map->map);
-	printf("width: %ld\n", map->width);
+	if (check_map(map) == false)
+		ft_error("Invalid map");
 	start_game(map);
-	ft_free(map->map);
 	free(map);
 	return ;
 }
