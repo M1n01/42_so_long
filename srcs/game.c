@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/05/11 14:50:07 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:12:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static t_game	*init_game(char *mp)
 	game->width = 640;
 	game->height = 480;
 	game->map_info.map = mp;
-	game->map_info.width = count_map_width(mp) + 1;
+	// game->map_info.width = count_map_width(mp) + 1;
+	game->map_info.width = count_map_width(mp);
 	game->map_info.height = count_map_height(mp);
 	game->objs = init_objs(game);
 	game->player = init_plr(game);
