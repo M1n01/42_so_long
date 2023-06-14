@@ -19,7 +19,7 @@ MLX = $(MLXDIR)/libmlx.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
