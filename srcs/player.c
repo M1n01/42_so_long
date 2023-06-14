@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/04 22:27:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/14 11:09:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ t_player	init_plr(t_game *game)
 
 	size = SIZE;
 	plr.player_down = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_open_down.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_front.xpm", &size, &size);
 	if (plr.player_down == NULL)
 		printf("error\n");
 	plr.player_up = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_open_up.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_back.xpm", &size, &size);
 	if (plr.player_up == NULL)
 		printf("error\n");
 	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_open_left.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_left.xpm", &size, &size);
 	if (plr.player_left == NULL)
 		printf("error\n");
 	plr.player_right = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-Man/pac_open_right.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_right.xpm", &size, &size);
 	if (plr.player_right == NULL)
 		printf("error\n");
 	plr.x = -1;
