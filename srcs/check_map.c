@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:58:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 23:06:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,32 @@
 static bool	check_objs(t_map *map);
 static bool	check_wall(t_map *map);
 
-bool	check_map(t_map *map)
+void	check_map(t_map *map)
 {
 	if (map->height == map->width)
-	{
-		ft_printf("not rectangle\n");
-		return (false);
-	}
-	if (!check_objs(map))
-	{
-		ft_printf("obj error\n");
-		return (false);
-	}
-	if (!check_wall(map))
-	{
-		ft_printf("wall error\n");
-		return (false);
-	}
-	if (!check_reach_objs(map))
-	{
-		ft_printf("not reach object\n");
-		return (false);
-	}
-	return (true);
+		ft_printf("Not rectangle.");
+	else if (!check_objs(map))
+		ft_printf("Contains inappropriate objects.");
+	else if (!check_wall(map))
+		ft_printf("Incorrect walls placement.");
+	else if (!check_reach_objs(map))
+		ft_printf("Cannot reach object.");
+	else
+		return ;
+	ft_free(map);
+	ft_printf(" Error\n");
+	exit(0);
 }
 
 static bool	check_objs(t_map *map)
 {
 	size_t	i;
 	size_t	start;
-	size_t	item;
 	size_t	goal;
 
 	i = 0;
 	start = 0;
-	item = 0;
+	map->items = 0;
 	goal = 0;
 	while (map->map[i] != '\0')
 	{
@@ -58,13 +49,13 @@ static bool	check_objs(t_map *map)
 		else if (map->map[i] == 'E')
 			goal++;
 		else if (map->map[i] == 'C')
-			item++;
+			map->items++;
 		else if (map->map[i] != '1' && map->map[i] != '0' \
 				&& map->map[i] != '\n')
 			return (false);
 		i++;
 	}
-	if (start != 1 || goal != 1 || item == 0)
+	if (start != 1 || goal != 1 || map->items == 0)
 		return (false);
 	return (true);
 }

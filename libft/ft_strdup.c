@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:19:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:36:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:11:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *s1)
 	len = ft_strlen(s1);
 	cpy = malloc(sizeof(char) * (len + 1));
 	if (cpy == NULL)
-		ft_error("malloc failed");
+		ft_error("Malloc failed");
 	i = 0;
 	while (s1[i])
 	{

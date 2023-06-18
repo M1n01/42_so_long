@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/14 14:32:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:37:34 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ t_objs	init_objs(t_game *game)
 	objs.wall = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Other/wall.xpm", &size, &size);
 	if (objs.wall == NULL)
-		printf("error\n");
+		ft_error("Cannot read wall file");
 	objs.collectible = mlx_xpm_file_to_image(game->ptr, \
 		"./img/sprites/Other/item.xpm", &size, &size);
 	if (objs.collectible == NULL)
-		printf("error\n");
+		ft_error("Cannot read collectible file");
 	objs.exit = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Other/grave.xpm", &size, &size);
+		"./img/sprites/Other/portal.xpm", &size, &size);
 	if (objs.exit == NULL)
-		printf("error\n");
+		ft_error("Cannot exit wall file");
 	objs.floor = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Ghost/black.xpm", &size, &size);
+		"./img/sprites/Pac-man/black.xpm", &size, &size);
 	if (objs.floor == NULL)
-		printf("error\n");
+		ft_error("Cannot floor wall file");
 	return (objs);
 }
 
@@ -50,9 +50,14 @@ void	put_obj(t_game *game, char c, int x, int y)
 	if (c == '1')
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
 			game->objs.wall, x * SIZE, y * SIZE);
-	if (c == 'C')
+	if (c == 'C' && game->count < game->map_info.items)
+	{
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
 			game->objs.collectible, x * SIZE, y * SIZE);
+		game->items[game->count].x = x;
+		game->items[game->count].y = y;
+		game->count++;
+	}
 	if (c == 'E')
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
 			game->objs.exit, x * SIZE, y * SIZE);
@@ -64,5 +69,4 @@ void	put_obj(t_game *game, char c, int x, int y)
 		game->player.x = x;
 		game->player.y = y;
 	}
-	check_game(game);
 }

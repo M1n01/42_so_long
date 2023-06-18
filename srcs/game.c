@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:58:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:36:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ static t_game	*init_game(t_map *mp)
 	if (game->ptr == NULL)
 		ft_error("Mlx init failed");
 	game->win_ptr = NULL;
-	game->width = 640;
-	game->height = 480;
+	game->width = (mp->width - 1) * SIZE;
+	game->height = mp->height * SIZE;
 	game->map_info.map = mp->map;
 	game->map_info.width = mp->width;
 	game->map_info.height = mp->height;
+	game->map_info.items = mp->items;
 	game->objs = init_objs(game);
 	game->player = init_plr(game);
+	game->count = 0;
+	game->items = malloc(sizeof(t_vector) * mp->items);
+	if (game->items == NULL)
+		ft_error("Malloc failed");
 	game->turn = 0;
 	game->clear = false;
 	return (game);
@@ -63,6 +68,7 @@ int	end_game(t_game *game)
 	destroy_plr(game);
 	destroy_objs(game);
 	ft_free(game->map_info.map);
+	ft_free(game->items);
 	ft_free(game);
 	exit(0);
 	return (0);

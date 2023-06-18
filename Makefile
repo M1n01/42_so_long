@@ -1,10 +1,12 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror $(addprefix -I,$(INCDIR))
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS += $(INCFLAGS)
 
 INCDIR = ./includes
 INC = $(shell find $(INCDIR) -name "*.h" -type f | xargs)
+INCFLAGS = -I/includes -I/usr/X11/include
 
 SRCDIR = ./srcs
 SRCS = $(shell find $(SRCDIR) -name "*.c" -type f | xargs)
@@ -14,12 +16,12 @@ LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
 MLXDIR = ./minilibx-linux
-MLX = $(MLXDIR)/libmlx.a
+MLX = $(MLXDIR)/libmlx_Darwin.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)

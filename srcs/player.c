@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/14 11:09:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:38:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+#include <stdio.h>
 
 t_player	init_plr(t_game *game)
 {
@@ -19,24 +21,25 @@ t_player	init_plr(t_game *game)
 
 	size = SIZE;
 	plr.player_down = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Ghost/ghost_front.xpm", &size, &size);
+		"./img/sprites/Pac-man/pac_open_down.xpm", &size, &size);
 	if (plr.player_down == NULL)
-		printf("error\n");
+		ft_error("Cannot main charactor down file");
 	plr.player_up = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Ghost/ghost_back.xpm", &size, &size);
+		"./img/sprites/Pac-man/pac_open_up.xpm", &size, &size);
 	if (plr.player_up == NULL)
-		printf("error\n");
+		ft_error("Cannot main charactor up file");
 	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Ghost/ghost_left.xpm", &size, &size);
+		"./img/sprites/Pac-man/pac_open_left.xpm", &size, &size);
 	if (plr.player_left == NULL)
-		printf("error\n");
+		ft_error("Cannot main charactor left file");
 	plr.player_right = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Ghost/ghost_right.xpm", &size, &size);
+		"./img/sprites/Pac-man/pac_open_right.xpm", &size, &size);
 	if (plr.player_right == NULL)
-		printf("error\n");
+		ft_error("Cannot main charactor right file");
 	plr.x = -1;
 	plr.y = -1;
 	plr.dir = -1;
+	plr.collects = 0;
 	return (plr);
 }
 
@@ -104,11 +107,12 @@ int	check_game(t_game *game)
 	if (game->map_info.map[game->player.y * game->map_info.width + \
 		game->player.x] == 'C')
 	{
+		game->player.collects++;
 		game->map_info.map[game->player.y * game->map_info.width + \
 			game->player.x] = '0';
 	}
 	if (game->map_info.map[game->player.y * game->map_info.width + \
-		game->player.x] == 'E')
+		game->player.x] == 'E' && game->player.collects == game->map_info.items)
 	{
 		game->clear = true;
 		end_game(game);

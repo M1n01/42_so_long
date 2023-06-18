@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 20:57:04 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:35:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:10:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 	digit = check_digit(n, 0);
 	nbr = malloc(sizeof(char) * (digit + 1));
 	if (!nbr)
-		ft_error("malloc failed");
+		ft_error("Malloc failed");
 	p = nbr + digit;
 	*p = '\0';
 	if (n <= 0)

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:22:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 23:14:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	so_long(char *file);
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
-		ft_error("No map file");
+		ft_error("No map file.");
 	so_long(argv[1]);
 	return (0);
 }
@@ -28,12 +28,13 @@ void	so_long(char *file)
 
 	map = malloc(sizeof(t_map));
 	if (map == NULL)
-		ft_error("malloc failed");
+		ft_error("Malloc failed.");
 	map->map = get_map(file);
+	// if (ft_strcmp(map->map, "") == 0)
+	// 	ft_error("Enpty map.");
 	map->width = count_map_width(map->map);
 	map->height = count_map_height(map->map);
-	if (check_map(map) == false)
-		ft_error("Invalid map");
+	check_map(map);
 	start_game(map);
 	return ;
 }

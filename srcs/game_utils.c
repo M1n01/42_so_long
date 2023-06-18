@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:15:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/06 23:12:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 19:54:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	make_start_window(t_game *game)
 		}
 		i++;
 	}
+	check_game(game);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 14:34:15 by minabe            #+#    #+#             */
-/*   Updated: 2023/04/30 17:37:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 22:11:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	{
 		str = malloc(sizeof(char) * (end - start + 1));
 		if (!str)
-			ft_error("malloc failed");
+			ft_error("Malloc failed");
 		ft_strlcpy(str, s1 + start, end - start + 1);
 	}
 	return (str);

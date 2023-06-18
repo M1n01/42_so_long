@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 15:44:43 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/04 22:37:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/18 23:07:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*read_and_join(char *map, int fd, char *buf)
 		ft_bzero(buf, BUFFER_SIZE + 1);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
-			ft_error("Failed to read file");
+			ft_error("Failed to read file\n");
 		tmp = ft_strjoin(map, buf);
 		ft_free(map);
 		map = tmp;
@@ -44,7 +44,7 @@ char	*get_map(char *file)
 		ft_error("Failed to open file");
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (buf == NULL)
-		ft_error("malloc failed");
+		ft_error("Malloc failed");
 	map = read_and_join(map, fd, buf);
 	close(fd);
 	return (map);
@@ -68,7 +68,7 @@ size_t	count_map_width(char *map)
 		if (width == 0)
 			width = j;
 		else if (width != j && j != 0)
-			ft_error("Invalid width map");
+			ft_error("Invalid width map.");
 		i += j;
 	}
 	return (width + 1);
