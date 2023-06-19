@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:51:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/18 22:37:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 15:20:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ t_objs	init_objs(t_game *game)
 	if (objs.collectible == NULL)
 		ft_error("Cannot read collectible file");
 	objs.exit = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Other/portal.xpm", &size, &size);
+		"./img/sprites/Other/grave.xpm", &size, &size);
 	if (objs.exit == NULL)
 		ft_error("Cannot exit wall file");
 	objs.floor = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-man/black.xpm", &size, &size);
+		"./img/sprites/Ghost/black.xpm", &size, &size);
 	if (objs.floor == NULL)
 		ft_error("Cannot floor wall file");
 	return (objs);
@@ -58,6 +58,9 @@ void	put_obj(t_game *game, char c, int x, int y)
 		game->items[game->count].y = y;
 		game->count++;
 	}
+	else if (c == 'C')
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->objs.collectible, x * SIZE, y * SIZE);
 	if (c == 'E')
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
 			game->objs.exit, x * SIZE, y * SIZE);

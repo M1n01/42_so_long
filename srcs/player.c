@@ -6,13 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/18 22:38:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 15:20:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-#include <stdio.h>
 
 t_player	init_plr(t_game *game)
 {
@@ -21,21 +19,21 @@ t_player	init_plr(t_game *game)
 
 	size = SIZE;
 	plr.player_down = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-man/pac_open_down.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_front.xpm", &size, &size);
 	if (plr.player_down == NULL)
 		ft_error("Cannot main charactor down file");
 	plr.player_up = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-man/pac_open_up.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_back.xpm", &size, &size);
 	if (plr.player_up == NULL)
 		ft_error("Cannot main charactor up file");
-	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-man/pac_open_left.xpm", &size, &size);
-	if (plr.player_left == NULL)
-		ft_error("Cannot main charactor left file");
 	plr.player_right = mlx_xpm_file_to_image(game->ptr, \
-		"./img/sprites/Pac-man/pac_open_right.xpm", &size, &size);
+		"./img/sprites/Ghost/ghost_right.xpm", &size, &size);
 	if (plr.player_right == NULL)
 		ft_error("Cannot main charactor right file");
+	plr.player_left = mlx_xpm_file_to_image(game->ptr, \
+		"./img/sprites/Ghost/ghost_left.xpm", &size, &size);
+	if (plr.player_left == NULL)
+		ft_error("Cannot main charactor left file");
 	plr.x = -1;
 	plr.y = -1;
 	plr.dir = -1;
