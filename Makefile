@@ -1,7 +1,7 @@
 NAME = so_long
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 CFLAGS += $(INCFLAGS)
 
 INCDIR	=	./includes

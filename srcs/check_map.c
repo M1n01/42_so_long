@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 18:36:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 18:53:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@ static bool	check_wall(t_map *map);
 void	check_map(t_map *map)
 {
 	if (map->height == map->width - 1)
-		ft_printf("Not rectangle.");
+		ft_printf("Error\nNot rectangle.\n");
 	else if (!check_objs(map))
-		ft_printf("Contains inappropriate objects.");
+		ft_printf("Error\nContains inappropriate objects.\n");
 	else if (!check_wall(map))
-		ft_printf("Incorrect walls placement.");
+		ft_printf("Error\nIncorrect walls placement.\n");
 	else if (!check_reach_objs(map))
-		ft_printf("Cannot reach all objects.");
+		ft_printf("Error\nCannot reach all objects.\n");
 	else
 		return ;
 	ft_free(map);
-	ft_printf(" Error\n");
-	exit(0);
+	exit(1);
 }
 
 static bool	check_objs(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 17:43:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 19:41:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	start_game(t_map *map)
 	mlx_loop_hook(game->ptr, print_window, game);
 	mlx_key_hook(game->win_ptr, deal_key, game);
 	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
+	ft_printf("Game start!!\n");
+	ft_printf("Pick up items and make the ghost come to life in his grave!\n");
 	mlx_loop(game->ptr);
 	return ;
 }
