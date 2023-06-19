@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/18 23:06:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:39:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	check_wall(t_map *map);
 
 void	check_map(t_map *map)
 {
-	if (map->height == map->width)
+	if (map->height == map->width - 1)
 		ft_printf("Not rectangle.");
 	else if (!check_objs(map))
 		ft_printf("Contains inappropriate objects.");

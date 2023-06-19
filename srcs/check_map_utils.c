@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:29:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 15:14:34 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:38:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ static bool	is_valid_move(t_map *map, size_t x, size_t y, char c)
 	if (x < map->width && y < map->height)
 	{
 		if (map->map[y * map->width + x] != '1')
-		{
-			if (c != 'E' && map->map[y * map->width + x] == 'E')
-				return (false);
-			else
-				return (true);
-		}
+			return (true);
 	}
 	return (false);
 }
