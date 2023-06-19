@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 17:39:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 18:36:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_map(t_map *map)
 	else if (!check_wall(map))
 		ft_printf("Incorrect walls placement.");
 	else if (!check_reach_objs(map))
-		ft_printf("Cannot reach object.");
+		ft_printf("Cannot reach all objects.");
 	else
 		return ;
 	ft_free(map);

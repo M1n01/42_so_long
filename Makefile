@@ -4,12 +4,18 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 CFLAGS += $(INCFLAGS)
 
-INCDIR = ./includes
-INC = $(shell find $(INCDIR) -name "*.h" -type f | xargs)
+INCDIR	=	./includes
+INC	=	includes/so_long.h
 INCFLAGS = -I/includes -I/usr/X11/include
 
 SRCDIR = ./srcs
-SRCS = $(shell find $(SRCDIR) -name "*.c" -type f | xargs)
+SRCS	=	srcs/check_map.c \
+			srcs/check_map_utils.c \
+			srcs/game.c \
+			srcs/main.c \
+			srcs/map.c \
+			srcs/object.c \
+			srcs/player.c
 OBJS = $(SRCS:%.c=%.o)
 
 LIBDIR = ./libft
@@ -19,9 +25,6 @@ MLXDIR = ./minilibx-linux
 MLX = $(MLXDIR)/libmlx_Darwin.a
 
 all: $(NAME)
-
-$(NAME): $(OBJS) $(LIBFT)
-		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)

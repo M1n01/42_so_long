@@ -6,5 +6,5 @@ a.out*
 .DS_Store
 *.o
 so_long_tester
-map
+maps/big.ber
 */debug*
