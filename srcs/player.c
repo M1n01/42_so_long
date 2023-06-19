@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 17:35:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:53:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,40 +80,22 @@ void	plr_move(t_game *game, int dir)
 
 void	put_plr(t_game *game)
 {
-	t_player	player;
+	t_player	plr;
 
-	player = game->player;
-	if (player.dir == UP)
+	plr = game->player;
+	if (plr.dir == UP)
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
-			player.player_up, player.x * 32, player.y * 32);
-	if (player.dir == DOWN || player.dir == -1)
+			plr.player_up, plr.x * 32, plr.y * 32);
+	if (plr.dir == DOWN || plr.dir == -1)
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
-			player.player_down, player.x * 32, player.y * 32);
-	if (player.dir == LEFT)
+			plr.player_down, plr.x * 32, plr.y * 32);
+	if (plr.dir == LEFT)
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
-			player.player_left, player.x * 32, player.y * 32);
-	if (player.dir == RIGHT)
+			plr.player_left, plr.x * 32, plr.y * 32);
+	if (plr.dir == RIGHT)
 		mlx_put_image_to_window(game->ptr, game->win_ptr, \
-			player.player_right, player.x * 32, player.y * 32);
-	mlx_put_image_to_window(game->ptr, game->win_ptr, \
-		game->objs.floor, player.pre_x * 32, player.pre_y * 32);
-}
-
-int	check_game(t_game *game)
-{
-	put_plr(game);
-	if (game->map_info.map[game->player.y * game->map_info.width + \
-		game->player.x] == 'C')
-	{
-		game->player.collects++;
-		game->map_info.map[game->player.y * game->map_info.width + \
-			game->player.x] = '0';
-	}
-	if (game->map_info.map[game->player.y * game->map_info.width + \
-		game->player.x] == 'E' && game->player.collects == game->map_info.items)
-	{
-		game->clear = true;
-		end_game(game);
-	}
-	return (0);
+			plr.player_right, plr.x * 32, plr.y * 32);
+	if (game->map_info.map[plr.pre_y * game->map_info.width + plr.pre_x] != 'E')
+		mlx_put_image_to_window(game->ptr, game->win_ptr, \
+			game->objs.floor, plr.pre_x * 32, plr.pre_y * 32);
 }

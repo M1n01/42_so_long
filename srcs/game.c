@@ -6,33 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 14:45:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:48:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static t_game	*init_game(t_map *mp);
-static int		print_window(t_game *game);
-static int		deal_key(int keycode, t_game *game);
+static int	check_game(t_game *game);
 
-void	start_game(t_map *map)
-{
-	t_game	*game;
-
-	game = init_game(map);
-	game->win_ptr = mlx_new_window(game->ptr, \
-		game->width, game->height, "so_long");
-	if (game->win_ptr == NULL)
-		ft_error("Mlx window init failed");
-	mlx_loop_hook(game->ptr, print_window, game);
-	mlx_key_hook(game->win_ptr, deal_key, game);
-	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
-	mlx_loop(game->ptr);
-	return ;
-}
-
-static t_game	*init_game(t_map *mp)
+t_game	*init_game(t_map *mp)
 {
 	t_game	*game;
 
@@ -60,7 +42,7 @@ static t_game	*init_game(t_map *mp)
 	return (game);
 }
 
-static int	print_window(t_game *game)
+int	print_window(t_game *game)
 {
 	size_t	i;
 	size_t	j;
@@ -86,7 +68,26 @@ static int	print_window(t_game *game)
 	return (0);
 }
 
-static int	deal_key(int keycode, t_game *game)
+static int	check_game(t_game *game)
+{
+	put_plr(game);
+	if (game->map_info.map[game->player.y * game->map_info.width + \
+		game->player.x] == 'C')
+	{
+		game->player.collects++;
+		game->map_info.map[game->player.y * game->map_info.width + \
+			game->player.x] = '0';
+	}
+	if (game->map_info.map[game->player.y * game->map_info.width + \
+		game->player.x] == 'E' && game->player.collects == game->map_info.items)
+	{
+		game->clear = true;
+		end_game(game);
+	}
+	return (0);
+}
+
+int	deal_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_Q || keycode == KEY_ESC)
 		end_game(game);

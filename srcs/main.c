@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 14:53:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 17:43:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	so_long(char *file);
+static void	so_long(char *file);
+static void	start_game(t_map *map);
 
 int	main(int argc, char **argv)
 {
@@ -22,7 +23,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	so_long(char *file)
+static void	so_long(char *file)
 {
 	t_map	*map;
 
@@ -36,5 +37,21 @@ void	so_long(char *file)
 	map->height = count_map_height(map->map);
 	check_map(map);
 	start_game(map);
+	return ;
+}
+
+static void	start_game(t_map *map)
+{
+	t_game	*game;
+
+	game = init_game(map);
+	game->win_ptr = mlx_new_window(game->ptr, \
+		game->width, game->height, "so_long");
+	if (game->win_ptr == NULL)
+		ft_error("Mlx window init failed");
+	mlx_loop_hook(game->ptr, print_window, game);
+	mlx_key_hook(game->win_ptr, deal_key, game);
+	mlx_hook(game->win_ptr, 33, 1L << 17, end_game, game);
+	mlx_loop(game->ptr);
 	return ;
 }
