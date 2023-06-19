@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:31:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/18 22:36:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/19 09:44:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static t_game	*init_game(t_map *mp)
 
 	game = malloc(sizeof(t_game));
 	if (game == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	game->ptr = mlx_init();
 	if (game->ptr == NULL)
-		ft_error("Mlx init failed");
+		ft_error("Mlx init failed.");
 	game->win_ptr = NULL;
 	game->width = (mp->width - 1) * SIZE;
 	game->height = mp->height * SIZE;
@@ -52,7 +52,7 @@ static t_game	*init_game(t_map *mp)
 	game->count = 0;
 	game->items = malloc(sizeof(t_vector) * mp->items);
 	if (game->items == NULL)
-		ft_error("Malloc failed");
+		ft_error("Malloc failed.");
 	game->turn = 0;
 	game->clear = false;
 	return (game);
@@ -61,7 +61,7 @@ static t_game	*init_game(t_map *mp)
 int	end_game(t_game *game)
 {
 	if (game->clear == false)
-		ft_printf("Exit game\n");
+		ft_printf("Exit game.\n");
 	else
 		ft_printf("Congrats, clear game!!\n");
 	mlx_destroy_window(game->ptr, game->win_ptr);

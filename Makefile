@@ -20,8 +20,14 @@ MLX = $(MLXDIR)/libmlx_Darwin.a
 
 all: $(NAME)
 
+$(NAME): $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)
+
+# $(NAME): $(OBJS) $(LIBFT) $(MLX)
+# 		$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX) -o $(NAME) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
