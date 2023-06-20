@@ -21,9 +21,6 @@ OBJS = $(SRCS:%.c=%.o)
 LIBDIR = ./libft
 LIBFT = $(LIBDIR)/libft.a
 
-MLXDIR = ./minilibx-linux
-MLX = $(MLXDIR)/libmlx_Darwin.a
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
