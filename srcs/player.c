@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:23:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/20 16:23:35 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 16:31:27 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	read_plr_file(t_game *game);
 t_player	init_plr(t_game *game)
 {
 	t_player	plr;
-	
+
 	read_plr_file(game);
 	plr = game->player;
 	plr.dir = -1;

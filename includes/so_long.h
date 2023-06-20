@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/20 15:14:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 16:32:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,18 @@
 # include <unistd.h>
 # include <errno.h>
 # include "libft.h"
-// # include "../minilibx-linux/mlx.h"
-// # include "../minilibx-linux/mlx_int.h"
 # include <mlx.h>
 
-# define KEY_ESC 53 //65307
-# define KEY_Q 12 //113
-# define KEY_W 13 //119
-# define KEY_A 0 //97
-# define KEY_S 1 //115
-# define KEY_D 2 //100
-# define KEY_UP 126 //65362
-# define KEY_LEFT 123 //65361
-# define KEY_DOWN 125 //65364
-# define KEY_RIGHT 124 //65363
+# define KEY_ESC 53
+# define KEY_Q 12
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
 
 # define SIZE 32
 

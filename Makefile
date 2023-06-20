@@ -29,9 +29,6 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lmlx -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)
 
-# $(NAME): $(OBJS) $(LIBFT) $(MLX)
-# 		$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -L/usr/X11R6/lib -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)
-
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
 
