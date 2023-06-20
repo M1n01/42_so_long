@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 16:43:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/19 19:41:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 12:27:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static void	so_long(char *file)
 	if (map == NULL)
 		ft_error("Malloc failed.");
 	map->map = get_map(file);
-	if (ft_strlen(map->map) == 0)
-		ft_error("Enpty map.");
 	map->width = count_map_width(map->map);
 	map->height = count_map_height(map->map);
 	check_map(map);
