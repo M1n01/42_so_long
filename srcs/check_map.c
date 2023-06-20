@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/20 12:30:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 13:07:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,23 @@
 static bool	check_objs(t_map *map);
 static bool	check_wall(t_map *map);
 
-void	check_map(t_map *map)
+bool	check_map(t_map *map)
 {
-	if (map->height == map->width - 1)
-		ft_printf("Error\nNot rectangle.\n");
-	else if (!check_objs(map))
-		ft_printf("Error\nInvalid map.\n");
-	else if (!check_wall(map))
-		ft_printf("Error\nIncorrect walls placement.\n");
-	else if (!check_reach_objs(map))
-		ft_printf("Error\nCannot reach all objects.\n");
-	else
-		return ;
-	ft_free(map);
-	exit(1);
+	if (map->height == map->width - 1 || !check_objs(map) \
+		|| !check_wall(map) || !check_reach_objs(map))
+	{
+		ft_printf("Error\n");
+		if (map->height == map->width - 1)
+			ft_printf("Not rectangle.");
+		else if (!check_objs(map))
+			ft_printf("Invalid map.");
+		else if (!check_wall(map))
+			ft_printf("Incorrect walls placement.");
+		else if (!check_reach_objs(map))
+			ft_printf("Cannot reach all objects.");
+		return (false);
+	}
+	return (true);
 }
 
 static bool	check_objs(t_map *map)
