@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:34:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/20 16:45:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 17:05:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,15 @@ static bool	check_wall(t_map *map)
 		}
 		i++;
 	}
+	return (true);
+}
+
+bool	is_ber_file(char *filename)
+{
+	char	*ext;
+
+	ext = ft_strrchr(filename, '.');
+	if (ft_strcmp(".ber", ext) != 0)
+		return (false);
 	return (true);
 }

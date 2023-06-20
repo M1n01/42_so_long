@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:00:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/06/20 16:32:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/06/20 16:59:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_game
 	bool		clear;
 }	t_game;
 
+bool		is_ber_file(char *filename);
 size_t		count_map_width(char *map);
 size_t		count_map_height(char *map);
 bool		check_map(t_map *map);
