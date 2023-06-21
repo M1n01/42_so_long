@@ -6,7 +6,7 @@ CFLAGS += $(INCFLAGS)
 
 INCDIR	=	./includes
 INC	=	includes/so_long.h
-INCFLAGS = -I/includes -I/usr/X11/include
+INCFLAGS = -I/includes
 
 SRCDIR = ./srcs
 SRCS	=	srcs/check_map.c \
@@ -29,12 +29,8 @@ $(NAME): $(OBJS) $(LIBFT)
 $(LIBFT):
 		$(MAKE) -C $(LIBDIR)
 
-$(MLX):
-		$(MAKE) -C $(MLXDIR)
-
 clean:
 		$(MAKE) fclean -C $(LIBDIR)
-		# $(MAKE) clean -C $(MLXDIR)
 		$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
